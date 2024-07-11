@@ -1,0 +1,42 @@
+/*
+Theme Name: Travel Mates
+Theme URI: https://wensolutions.com/themes/travel-mates/
+Template: travelsolution
+Author: WP Travel
+Author URI: https://wptravel.io/
+Description: Travel Mates is a WordPress Full Site Editing (FSE) theme and a child theme of Travel Solution, designed specifically for travel and tour-related websites. This theme ensures seamless integration with the block editor and is fully compatible with the WP Travel plugin (the best WordPress Tour Operator Plugin). Travel Mates enhances your website's capabilities in managing travel itineraries, bookings, and essential travel components with ease. The key features of this theme include newsletter sign-up, showcasing top destinations, popular tours, and blogs. Additionally, it offers Block Editor Patterns, Block Editor Styles, Blog, Custom Background, Custom Logo, Custom Menu, Featured Images, Footer Widgets, Full Site Editing, Left Sidebar, One Column, Right Sidebar, Threaded Comments, Translation Ready, Two Columns, and Wide Blocks. These features empower users to create stunning and interactive travel content effortlessly. Travel Mates is ideal for travel bloggers, tour operators, and travel agencies aiming to inspire wanderlust and streamline travel bookings. It is your key to achieving business objectives in the travel industry.
+Tags: blog, one-column, two-columns, left-sidebar, right-sidebar, block-patterns, custom-background, custom-logo, custom-menu, featured-images, footer-widgets, full-site-editing,  threaded-comments, block-styles, wide-blocks, translation-ready
+Text Domain: travel-mates
+Requires at least: 6.0
+Requires PHP: 7.4
+Tested up to: 6.5
+Version: 1.0.2
+
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+.wpcf7 textarea,
+.wpcf7 input{
+    height: 35px;
+    width: 100%;
+}
+
+.related-trips{
+    overflow: hidden;
+}
+
+.wpcf7 textarea{
+height:200px;
+}
+
+#site-header .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open{
+    background-color: #fff !important;
+}
+
+
+@media screen and (max-width: 600px){
+    .hide-mobile{
+        display:none !important;
+    }
+}

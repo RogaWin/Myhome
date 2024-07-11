@@ -1,0 +1,303 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
+	"customTemplates": [
+		{
+			"name": "page-with-full-width",
+			"postTypes": [
+				"post",
+				"page"
+			],
+			"title": "Page With Full Width"
+		},
+		{
+			"name": "page-with-left-sidebar",
+			"postTypes": [
+				"post",
+				"page"
+			],
+			"title": "Page With Left Sidebar"
+		},
+		{
+			"name": "page-with-right-sidebar",
+			"postTypes": [
+				"post",
+				"page"
+			],
+			"title": "Page With Right Sidebar"
+		}
+	],
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"duotone": [
+				{
+					"colors": [
+						"#00a0d2",
+						"#0073aa"
+					],
+					"name": "Secondary and primary",
+					"slug": "secondary-primary"
+				},
+				{
+					"colors": [
+						"#0073aa",
+						"#000000"
+					],
+					"name": "Primary and Contrast",
+					"slug": "primary-contrast"
+				}
+			],
+			"gradients": [
+				{
+					"gradient": "linear-gradient(#0073aa 49.9%,#fff 50%)",
+					"name": "Primary color to white",
+					"slug": "primary-white"
+				},
+				{
+					"gradient": "linear-gradient(#fff 49.9%,#0073aa 50%)",
+					"name": "Horizontal white to Primary color",
+					"slug": "white-primary"
+				}
+			],
+			"palette": [
+				{
+					"color": "#eeeeee",
+					"name": "Base",
+					"slug": "base"
+				},
+				{
+					"color": "#ffffff",
+					"name": "Bright",
+					"slug": "bright"
+				},
+				{
+					"color": "#000000",
+					"name": "Contrast",
+					"slug": "contrast"
+				},
+				{
+					"color": "#8478ff",
+					"name": "Primary",
+					"slug": "primary"
+				},
+				{
+					"color": "#000000",
+					"name": "Secondary",
+					"slug": "secondary"
+				},
+				{
+					"color": "transparent",
+					"name": "Transparent",
+					"slug": "transparent"
+				}
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/code": {
+				"color": {
+					"text": "var(--wp--preset--color--contrast)"
+				}
+			},
+			"core/comment-author-name": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--small)"
+				}
+			},
+			"core/comment-date": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--small)"
+				}
+			},
+			"core/comment-edit-link": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--small)"
+				}
+			},
+			"core/comment-reply-link": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--small)",
+					"textDecoration": "none"
+				}
+			},
+			"core/navigation": {
+				"color": {
+					"text": "var(--wp--preset--color--contrast)"
+				},
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--small)",
+					"fontWeight": "700"
+				}
+			},
+			"core/post-author": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--extra-small)"
+				}
+			},
+			"core/post-date": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--extra-small)"
+				}
+			},
+			"core/post-excerpt": {
+				"elements": {
+					"link": {
+						"typography": {
+							"textDecoration": "none"
+						}
+					}
+				},
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--x-large)"
+				}
+			},
+			"core/post-navigation-link": {
+				"typography": {
+					"fontWeight": "700"
+				}
+			},
+			"core/post-terms": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--extra-small)"
+				}
+			},
+			"core/post-title": {
+				"elements": {
+					"link": {
+						"typography": {
+							"textDecoration": "none"
+						}
+					}
+				},
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--x-large)"
+				}
+			},
+			"core/query-pagination": {
+				"elements": {
+					"link": {
+						"typography": {
+							"textDecoration": "none"
+						}
+					}
+				},
+				"typography": {
+					"fontWeight": "700"
+				}
+			},
+			"core/query-title": {
+				"elements": {
+					"link": {
+						"typography": {
+							"textDecoration": "none"
+						}
+					}
+				},
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--x-large)"
+				}
+			},
+			"core/site-title": {
+				"elements": {
+					"link": {
+						":hover": {
+							"color": {
+								"text": "var(--wp--preset--color--primary)"
+							}
+						},
+						"color": {
+							"text": "var(--wp--preset--color--contrast)"
+						},
+						"typography": {
+							"textDecoration": "none"
+						}
+					}
+				},
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--medium)"
+				}
+			}
+		},
+		"color": {
+			"background": "var(--wp--preset--color--bright)",
+			"text": "var(--wp--preset--color--contrast)"
+		},
+		"css": ".wp-travel-form-field.button-field{\nmargin-top: -50px !important;\n}\n\n.stripe-procced-payment-btn{\nposition: relative; \n}\n\n.checkout-page-wrap .ws-theme-timeline-block{\n    margin: 0px !important;\n    border-bottom: none !important;\n}\n\n\n.wp-travel-book{\n    background-color: var(--wp--preset--color--primary);\n    border-width: 0;\n    color: var(--wp--preset--color--bright);\n    font-family: inherit;\n    font-size: var(--wp--preset--font-size--small);\n    font-weight: 700;\n    line-height: inherit;\n    padding: calc(0.667em + 2px) calc(1.333em + 2px);\n    text-decoration: none;\n    box-shadow: var(--wp--preset--shadow--natural);\nborder-radius: 10px !important;\n}\n\n.checkout-page-wrap .wp-travel-checkout-section .checkout-left .ws-theme-timeline-block .panel-body {\n    border: 1px solid #e3e3e3 !important;\n}\n\n.homepage-banner{\nclip-path: ellipse(70% 67% at 50% 31%);\n}\n\n.wptravel-block-trip-filters .wp-trave-price-range.wp-travel-form-field input#amount {\n    border: none !important;\n    background: transparent !important;\npointer-events: none;\noutline: none;\n}\n\n#travel-mates-site-header .wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open {\n    background-color: #fff !important;\n}\n\n#testimonial-section .swiper-slide-active{\n   margin-right: 20px;\n}\n\n#testimonial-section .swiper-pagination-bullets.swiper-pagination-horizontal {\n    bottom: -20px;\n    padding-top: 20px;\n    z-index: 123123123123123;\n    position: initial;\n}\n\n.best-destination code{\n    background: var(--wp--preset--color--primary);\n    padding: 5px 15px;\n    border-radius: 10px;\n}\n\n#wptravel-block-trip-overviewwptravel-block-trip-overview p{\ntext-align: justify;\n}\n\n#travelyo-page-header{\n    clip-path: ellipse(67% 57% at 50% 38%);\n}\n\n.post-comment-section,\n.related-trips{\nclip-path:  ellipse(80% 60% at 50% 40%);\n}\n\n.wp-page-numbers.current{\n   background-color: #000;\n   color: #fff;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-image img {\n    border-top-left-radius: 10px !important;\n    border-top-right-radius: 10px !important;\n}\n\n.tour-info .tour-info-box {\n            padding: 0px;\n        }\n        #wp-travel-send-enquiries-btn a {\n            font-weight: 600;\n        }\n        \n        #wp-travel-send-enquiries-btn a:focus,\n        #wp-travel-send-enquiries-btn a:hover {\n            color: #fff !important;\n            font-weight: 600;\n        }\n\n.wptravel-block-trip-outline p{\ntext-align: justify !important;\n}\n\n.wp-travel-gallery{\n      margin-bottom: 0px !important;\n}\n\n.wp-travel-calendar-view{\n   background-color: transparent !important;\n}\n\n.wp-travel-gallery ul img {\n    height: 200px !important;\n    border-radius: 10px;\n}\n\n.wp-travel-gallery p,\n.wp-travel-gallery ul li a br{\n    display: none;\n}\n\n.wp-travel-gallery ul li {\n\n    margin-bottom: 10px;\n}\n\n.custom-cat-list{\n    list-style: none;\n    padding-left: 0px;\n}\n\n.custom-cat-list li{\n    background: aliceblue;\n    padding: 5px 15px;\n    border-radius: 10px;\n    /* text-align: end; */\n    display: flex;\n    justify-content: space-evenly;\n    align-items: center;\nmargin-bottom: 10px;\n}\n\n.custom-cat-list li a{\n   width: 90%;\ntext-decoration: none;\n\n}\n\n#wptravel-block-trip-search.wptravel-block-trip-search .wp-travel-search form p input, #wptravel-block-trip-search.wptravel-block-trip-search form select.wp-travel-taxonomy {\n    height: 50px;\n}\n\n.wptravel-layout-v2 #wptravel-block-trip-search.wptravel-block-trip-search .wp-travel-search form p input, .wptravel-layout-v2 #wptravel-block-trip-search form select.wp-travel-taxonomy,\n#wptravel-block-trips-list .wp-page-numbers a.wp-page-numbers,\n.wptravel-block-trip-filters .wp-travel-itinerary-items .wp-travel-form-field select,\n.wptravel-block-trip-filters input,\n.wptravel-block-trip-filters #wp-travel-filter-search-submit,\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content .right-content .explore-btn,\n.wptravel-layout-v2 .wptravel-archive-wrapper .view-box,\n#wp-travel-send-enquiries-btn,\n.wptravel-blocks-single-trip-book-button,\n#subscribe-submit button,\n#subscribe-email input,\n#submit,\ntextarea,\n.single .wp-block-post-terms a,\n.wp-block-search input, .wp-block-search button {\n    border-radius: 10px !important;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content .right-content .footer-wrapper .trip-price .price-here {\n    font-size: 18px !important;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper .view-box .view-content .right-content .footer-wrapper .trip-price del {\n    font-size: 16px !important;;\n}\n\n.view-content .trip-location{\n text-align: right;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content .right-content{\nmargin: 0px 0px 10px 0px !important;\n}\n\n#wptravel-block-trips-list .entry-title .heading-link {\n    font-size: 18px !important;\n}\n\n#wptravel-block-trips-list a.explore-btn{\ndisplay:none;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content .left-content .trip-icons{\npadding: 10px 10px !important;\nmargin: 5px 0 !important;\ngap: 5px !important;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content{\nmargin: 5px 0 !important;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content .right-content .footer-wrapper {\n    margin-bottom: auto !important;\n}\n\n.wptravel-layout-v2 .wptravel-archive-wrapper.grid-view .view-box .view-content .right-content .footer-wrapper{\n\nmin-height: 108px !important;\n}",
+		"elements": {
+			"button": {
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--bright)"
+					}
+				},
+				"color": {
+					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--bright)"
+				},
+				"shadow": "var(--wp--preset--shadow--natural)",
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--small)",
+					"fontWeight": "700"
+				}
+			},
+			"caption": {
+				"color": {
+					"text": "var(--wp--preset--color--primary)"
+				}
+			},
+			"cite": {
+				"color": {
+					"text": "var(--wp--preset--color--primary)"
+				}
+			},
+			"link": {
+				":active": {
+					"color": {
+						"text": "var(--wp--preset--color--primary)"
+					}
+				},
+				":focus": {
+					"color": {
+						"text": "var(--wp--preset--color--primary)"
+					}
+				},
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--primary)"
+					}
+				},
+				"color": {
+					"text": "var(--wp--preset--color--contrast)"
+				},
+				"typography": {
+					"textDecoration": "underline"
+				}
+			}
+		},
+		"spacing": {
+			"padding": {
+				"left": "var(--wp--preset--spacing--50)",
+				"right": "var(--wp--preset--spacing--50)"
+			}
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--poppins)",
+			"fontSize": "16px",
+			"lineHeight": "1.75"
+		}
+	},
+	"templateParts": [
+		{
+			"area": "header",
+			"name": "header",
+			"title": "Header"
+		},
+		{
+			"area": "footer",
+			"name": "footer",
+			"title": "Footer"
+		}
+	],
+	"version": 2
+}

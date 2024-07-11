@@ -1,0 +1,272 @@
+<?php
+
+use Optimole\Sdk\Resource\ImageProperty\ResizeTypeProperty;
+use Optimole\Sdk\ValueObject\Position;
+
+/**
+ * Normalization traits.
+ *
+ * @package    \Optml\Inc\Traits
+ * @author     Optimole <friends@optimole.com>
+ */
+trait Optml_Normalizer {
+
+	/**
+	 * Normalize value to boolean.
+	 *
+	 * @param mixed $value Value to process.
+	 *
+	 * @return bool
+	 */
+	public function to_boolean( $value ) {
+		if ( in_array( $value, [ 'yes', 'enabled', 'true', '1' ], true ) ) {
+			return true;
+		}
+
+		if ( in_array( $value, [ 'no', 'disabled', 'false', '0' ], true ) ) {
+			return false;
+		}
+
+		return boolval( $value );
+	}
+
+	/**
+	 * Return domain hash.
+	 *
+	 * @param string $domain Full url.
+	 *
+	 * @return string Domain hash.
+	 */
+	public function to_domain_hash( $domain ) {
+		$domain_parts = parse_url( $domain );
+		$domain       = isset( $domain_parts['host'] ) ? $domain_parts['host'] : '';
+		$prefix       = substr( $domain, 0, 4 );
+		if ( $prefix === 'www.' ) {
+			$domain = substr( $domain, 4 );
+		}
+
+		return base64_encode( $domain );
+	}
+	/**
+	 * Strip slashes on unicode encoded strings.
+	 *
+	 * @param string $string Input string.
+	 *
+	 * @return string Decoded string.
+	 */
+	public function strip_slashes( $string ) {
+		return html_entity_decode( stripslashes( preg_replace( '/\\\u([\da-fA-F]{4})/', '&#x\1;', $string ) ) );
+	}
+
+	/**
+	 * Normalize value to positive integer.
+	 *
+	 * @param mixed $value Value to process.
+	 *
+	 * @return integer
+	 */
+	public function to_positive_integer( $value ) {
+		$integer = (int) $value;
+
+		return ( $integer > 0 ) ? $integer : 0;
+	}
+
+	/**
+	 * Normalize value to map.
+	 *
+	 * @param mixed $value Value to process.
+	 * @param array $map Associative list from witch to return.
+	 * @param mixed $default Default.
+	 *
+	 * @return mixed
+	 */
+	public function to_map_values( $value, $map, $default ) {
+		if ( in_array( $value, $map, true ) ) {
+			return $value;
+		}
+
+		return $default;
+	}
+
+	/**
+	 * Normalize value to an accepted quality.
+	 *
+	 * @param mixed $value Value to process.
+	 *
+	 * @return mixed
+	 */
+	public function to_accepted_quality( $value ) {
+		if ( is_numeric( $value ) ) {
+			return intval( $value );
+		}
+		$value = trim( $value );
+
+		$accepted_qualities = [
+			'eco'      => 'eco',
+			'auto'     => 'auto',
+			'mauto'    => 'mauto',
+			'high_c'   => 55,
+			'medium_c' => 75,
+			'low_c'    => 90,
+		];
+
+		if ( array_key_exists( $value, $accepted_qualities ) ) {
+			return $accepted_qualities[ $value ];
+		}
+
+		// Legacy values.
+		return 60;
+	}
+
+	/**
+	 * Normalize value to an accepted minify.
+	 *
+	 * @param mixed $value Value to process.
+	 *
+	 * @return mixed
+	 */
+	public function to_accepted_minify( $value ) {
+		if ( is_numeric( $value ) ) {
+			return $this->to_bound_integer( $value, 0, 1 );
+		}
+
+		return 'auto';
+	}
+
+	/**
+	 * Normalize value to an integer within bounds.
+	 *
+	 * @param mixed   $value Value to process.
+	 * @param integer $min Lower bound.
+	 * @param integer $max Upper bound.
+	 *
+	 * @return integer
+	 */
+	public function to_bound_integer( $value, $min, $max ) {
+		$integer = absint( $value );
+		if ( $integer < $min ) {
+			$integer = $min;
+		}
+		if ( $integer > $max ) {
+			$integer = $max;
+		}
+
+		return $integer;
+	}
+
+	/**
+	 * Normalize arguments for crop.
+	 *
+	 * @param array|bool $crop_args Crop arguments.
+	 *
+	 * @return array
+	 */
+	public function to_optml_crop( $crop_args = [] ) {
+
+		$enlarge = false;
+		if ( isset( $crop_args['enlarge'] ) ) {
+			$enlarge   = $crop_args['enlarge'];
+			$crop_args = $crop_args['crop'];
+		}
+		if ( $crop_args === true ) {
+			return [
+				'type'    => ResizeTypeProperty::FILL,
+				'enlarge' => $enlarge,
+				'gravity' => Position::CENTER,
+			];
+		}
+		if ( $crop_args === false || ! is_array( $crop_args ) || count( $crop_args ) !== 2 ) {
+			return [];
+		}
+
+		$allowed_x         = [
+			'left'   => true,
+			'center' => true,
+			'right'  => true,
+		];
+		$allowed_y         = [
+			'top'    => true,
+			'center' => true,
+			'bottom' => true,
+		];
+		$allowed_gravities = [
+			'left'         => Position::WEST,
+			'right'        => Position::EAST,
+			'top'          => Position::NORTH,
+			'bottom'       => Position::SOUTH,
+			'lefttop'      => Position::NORTH_WEST,
+			'leftbottom'   => Position::SOUTH_WEST,
+			'righttop'     => Position::NORTH_EAST,
+			'rightbottom'  => Position::SOUTH_EAST,
+			'centertop'    => [ 0.5, 0 ],
+			'centerbottom' => [ 0.5, 1 ],
+			'leftcenter'   => [ 0, 0.5 ],
+			'rightcenter'  => [ 1, 0.5 ],
+		];
+
+		$gravity    = Position::CENTER;
+		$key_search = ( $crop_args[0] === true ? '' :
+				( isset( $allowed_x[ $crop_args[0] ] ) ? $crop_args[0] : '' ) ) .
+					  ( $crop_args[1] === true ? '' :
+						  ( isset( $allowed_y[ $crop_args[1] ] ) ? $crop_args[1] : '' ) );
+
+		if ( array_key_exists( $key_search, $allowed_gravities ) ) {
+			$gravity = $allowed_gravities[ $key_search ];
+		}
+
+		return [
+			'type'    => ResizeTypeProperty::FILL,
+			'enlarge' => $enlarge,
+			'gravity' => $gravity,
+		];
+	}
+
+	/**
+	 * Normalize arguments for watermark.
+	 *
+	 * @param array $watermark_args Watermark arguments.
+	 *
+	 * @return array
+	 */
+	public function to_optml_watermark( $watermark_args = [] ) {
+		$allowed_gravities = [
+			'left'         => Position::WEST,
+			'right'        => Position::EAST,
+			'top'          => Position::NORTH,
+			'bottom'       => Position::SOUTH,
+			'left_top'     => Position::NORTH_WEST,
+			'left_bottom'  => Position::SOUTH_WEST,
+			'right_top'    => Position::NORTH_EAST,
+			'right_bottom' => Position::SOUTH_EAST,
+		];
+		$gravity           = Position::CENTER;
+		if ( isset( $watermark_args['position'] ) && array_key_exists( $watermark_args['position'], $allowed_gravities ) ) {
+			$gravity = $allowed_gravities[ $watermark_args['position'] ];
+		}
+
+		return [
+			'opacity'  => 1,
+			'position' => $gravity,
+		];
+	}
+	/**
+	 * If missing, add schema to urls.
+	 *
+	 * @param string $url Url to check.
+	 *
+	 * @return string
+	 */
+	public function add_schema( $url ) {
+		$schema_url = $url;
+		$should_add_schema = false;
+		if ( function_exists( 'str_starts_with' ) ) {
+			$should_add_schema = str_starts_with( $schema_url, '//' );
+		} else {
+			$should_add_schema = substr( $schema_url, 0, strlen( '//' ) ) === '//';
+		}
+		if ( $should_add_schema ) {
+			$schema_url = is_ssl() ? 'https:' : 'http:' . $schema_url;
+		}
+		return $schema_url;
+	}
+}
