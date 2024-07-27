@@ -6,6 +6,9 @@ import ArticleManageVue from '@/views/article/ArticleManage.vue'
 import UserAvatarVue from '@/views/user/UserAvatar.vue'
 import UserInfoVue from '@/views/user/UserInfo.vue'
 import UserResetPasswordVue from '@/views/user/UserResetPassword.vue'
+import Reader from '@/views/article/Reader.vue'
+import Editor from '@/views/article/Editor.vue'
+
 
 
 //定义路由关系
@@ -44,7 +47,15 @@ const routes = [
                 component:UserResetPasswordVue,
             }
         ]
-    }
+    },
+    {
+        path: '/article/reader',
+        component: Reader,
+    },
+    {
+        path: '/article/editor',
+        component: Editor,
+    },
 ]
 //创建路由实例
 const router = createRouter({
