@@ -36,7 +36,7 @@ const isRegister = ref(false), registerData = ref({
 };
 
 //调用后台接口,完成注册
-import {userRegisterService,userLoginService} from '@/api/user.js'
+import {userRegisterService, userLoginService, UserInfoService} from '@/api/user.js'
 const register =async () => {
     //registerData是想响应式对象
     // let result = await userRegisterService(registerData.value);
@@ -52,8 +52,16 @@ const register =async () => {
 //登录函数
 import {useTokenStore} from '@/stores/token.js'
 import {useRouter} from 'vue-router'
+import useUserInfoStore from "@/stores/userinfo.js";
+
+const userInfoStore=useUserInfoStore();
 const router = useRouter();
 const tokenStore = useTokenStore();
+const getUserInfo = async () => {
+    let result = await UserInfoService();
+    // 数据存储到 Pinia 中
+    userInfoStore.setInfo(result.data);
+};
 
 const login = async() => {
     //调用接口完成登入
@@ -67,7 +75,8 @@ const login = async() => {
     let result = await userLoginService(registerData.value);
     ElMessage.success(result.msg?result.msg:'登录成功');
     tokenStore.setToken(result.data);
-    await router.push('/layout');
+    await getUserInfo();
+    await router.push('/home');
 }
 //定义函数用于清空数据模型数据
 const clearRegisterData = () => {
@@ -129,10 +138,17 @@ const clearRegisterData = () => {
                     <el-button class="button" type="primary" auto-insert-space @click="login()">登录</el-button>
                 </el-form-item>
                 <el-form-item class="flex">
-                    <el-link type="info" :underline="false" @click="isRegister = true;clearRegisterData()">
-                        注册 →
-                    </el-link>
+                    <div class="flex">
+                        <el-link type="info" :underline="false" @click="isRegister = true;clearRegisterData()">
+                            注册 →
+                        </el-link>
+                        <el-link type="info" :underline="false" @click="isRegister = true;clearRegisterData()" >
+                          跳过只看文章
+                        </el-link>
+                    </div>
+
                 </el-form-item>
+
             </el-form>
         </el-col>
     </el-row>

@@ -81,9 +81,11 @@ const articleList = async () => {
 }
 articleList();
 
-import { QuillEditor } from '@vueup/vue-quill'
+import Reader from '@/views/article/EasyReader.vue'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import {Plus} from '@element-plus/icons-vue'
+import {useRouter} from "vue-router";
+const router = useRouter();
 //控制抽屉是否显示
 const visibleDrawer = ref(false)
 //添加表单数据模型
@@ -105,6 +107,7 @@ const uploadSuccess = (result)=>{
 
 //添加文章
 import {ElMessage, ElMessageBox} from "element-plus";
+import EditorVue from "@/App.vue";
 //定义变量控制标题
 const title = ref('');
 
@@ -118,21 +121,29 @@ const addArticle = async (clickState)=>{
 
     //抽屉消失
     visibleDrawer.value=false;
-     articleList();
+    await articleList();
 
 }
 //显示编辑分类弹窗
-const showDrawer = (row) => {
-    visibleDrawer.value = true;
+// const showDrawer = (row) => {
+//     visibleDrawer.value = true;
+//     title.value = '编辑文章';
+//     //数据拷贝
+//     articleModel.value.title=row.title;
+//     articleModel.value.categoryId=row.categoryId;
+//     articleModel.value.coverImg=row.coverImg;
+//     articleModel.value.content=row.content;
+//     articleModel.value.state=row.state;
+//     //扩展属性将来要传递给后台
+//     articleModel.value.id=row.id;
+//
+// }
+
+
+//进入新的Editor
+const userEdit = (row) => {
     title.value = '编辑文章';
-    //数据拷贝
-    articleModel.value.title=row.title;
-    articleModel.value.categoryId=row.categoryId;
-    articleModel.value.coverImg=row.coverImg;
-    articleModel.value.content=row.content;
-    articleModel.value.state=row.state;
-    //扩展属性将来要传递给后台
-    articleModel.value.id=row.id;
+    router.push('/article/editor')
 }
 
 
@@ -214,7 +225,12 @@ const deleteArticle = (row)=>{
 
         <el-form inline>
             <el-form-item label="搜索框">
-
+                <el-input
+                    v-model="keyword"
+                    style="width: 240px"
+                    placeholder="请输入"
+                    clearable
+                />
             </el-form-item>
             <el-form-item label="文章分类：">
                 <el-select placeholder="请选择" v-model="categoryId" style="width: 240px">
@@ -246,7 +262,7 @@ const deleteArticle = (row)=>{
             <el-table-column label="状态" prop="state"></el-table-column>
             <el-table-column label="操作" width="100">
                 <template #default="{ row }">
-                    <el-button :icon="Edit" circle plain type="primary" @click="showDrawer(row)"></el-button>
+                    <el-button :icon="Edit" circle plain type="primary" @click="userEdit()"></el-button>
                     <el-button :icon="Delete" circle plain type="danger" @click="deleteArticle(row)"></el-button>
                 </template>
             </el-table-column>
@@ -259,53 +275,51 @@ const deleteArticle = (row)=>{
                        layout="jumper, total, sizes, prev, pager, next" background :total="total" @size-change="onSizeChange"
                        @current-change="onCurrentChange" style="margin-top: 20px; justify-content: flex-end" />
         <!-- 抽屉 -->
-        <el-drawer v-model="visibleDrawer" :title="title" direction="rtl" size="50%">
-            <!-- 添加文章表单 -->
-            <el-form :model="articleModel" label-width="100px" >
-                <el-form-item label="文章标题" >
-                <!--TODO 文章标题的检查要求太高了并且没有rules规则-->
-                    <el-input v-model="articleModel.title" placeholder="请输入标题"></el-input>
-                </el-form-item>
-                <el-form-item label="文章分类">
-                    <el-select placeholder="请选择" v-model="articleModel.categoryId">
-                        <el-option v-for="c in categorys" :key="c.id" :label="c.categoryName" :value="c.id">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="文章封面">
+<!--        <el-drawer v-model="visibleDrawer" :title="title" direction="rtl" size="50%">-->
+<!--            &lt;!&ndash; 添加文章表单 &ndash;&gt;-->
+<!--            <el-form :model="articleModel" label-width="100px" >-->
+<!--                <el-form-item label="文章标题" >-->
+<!--                &lt;!&ndash;TODO 文章标题的检查要求太高了并且没有rules规则&ndash;&gt;-->
+<!--                    <el-input v-model="articleModel.title" placeholder="请输入标题"></el-input>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="文章分类">-->
+<!--                    <el-select placeholder="请选择" v-model="articleModel.categoryId">-->
+<!--                        <el-option v-for="c in categorys" :key="c.id" :label="c.categoryName" :value="c.id">-->
+<!--                        </el-option>-->
+<!--                    </el-select>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item label="文章封面">-->
 
-                    <el-upload class="avatar-uploader"
-                               :auto-upload="true"
-                               :show-file-list="false"
-                               action="/api/upload"
-                               name="file"
-                               :headers="{'Authorization':tokenStore.token}"
-                               :on-success="uploadSuccess"
-                    >
-                        <img v-if="articleModel.coverImg" :src="articleModel.coverImg" class="avatar" />
-                        <el-icon v-else class="avatar-uploader-icon">
-                            <Plus />
-                        </el-icon>
-                    </el-upload>
-                </el-form-item>
+<!--                    <el-upload class="avatar-uploader"-->
+<!--                               :auto-upload="true"-->
+<!--                               :show-file-list="false"-->
+<!--                               action="/api/upload"-->
+<!--                               name="file"-->
+<!--                               :headers="{'Authorization':tokenStore.token}"-->
+<!--                               :on-success="uploadSuccess"-->
+<!--                    >-->
+<!--                        <img v-if="articleModel.coverImg" :src="articleModel.coverImg" class="avatar" />-->
+<!--                        <el-icon v-else class="avatar-uploader-icon">-->
+<!--                            <Plus />-->
+<!--                        </el-icon>-->
+<!--                    </el-upload>-->
+<!--                </el-form-item>-->
 
-                <el-form-item label="文章内容">
-                    <!--TODO 嵌入Editor-->
-                    <div class="editor">
-                        <quill-editor
-                            theme="snow"
-                            v-model:content="articleModel.content"
-                            contentType="html"
-                        >
-                        </quill-editor>
-                    </div>
-                </el-form-item>
-                <el-form-item>
-                    <el-button type="primary" @click="title==='添加文章'?addArticle('已发布'):updateArticle('已发布')">发布</el-button>
-                    <el-button type="info" @click="title==='添加文章'?addArticle('草稿'):updateArticle('草稿')">草稿</el-button>
-                </el-form-item>
-            </el-form>
-        </el-drawer>
+<!--                <el-form-item label="文章内容">-->
+<!--                    &lt;!&ndash;TODO 嵌入Editor&ndash;&gt;-->
+<!--                    <div class="editor">-->
+<!--                        <el-scrollbar height="300px">-->
+<!--                            <Reader></Reader>-->
+<!--                        </el-scrollbar>-->
+
+<!--                    </div>-->
+<!--                </el-form-item>-->
+<!--                <el-form-item>-->
+<!--                    <el-button type="primary" @click="title==='添加文章'?addArticle('已发布'):updateArticle('已发布')">发布</el-button>-->
+<!--                    <el-button type="info" @click="title==='添加文章'?addArticle('草稿'):updateArticle('草稿')">草稿</el-button>-->
+<!--                </el-form-item>-->
+<!--            </el-form>-->
+<!--        </el-drawer>-->
     </el-card>
 </template>
 <style lang="scss" scoped>
@@ -355,5 +369,17 @@ const deleteArticle = (row)=>{
     :deep(.ql-editor) {
         min-height: 200px;
     }
+}
+
+.scrollbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 4px;
+    background: var(--el-color-primary-light-9);
+    color: var(--el-color-primary);
 }
 </style>

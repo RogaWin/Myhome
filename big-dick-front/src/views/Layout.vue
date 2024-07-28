@@ -58,7 +58,7 @@ const handleCommand = (command) => {
                     type: 'success',
                     message: '退出登录成功',
                 });
-                await router.push('/login');
+                await router.push('/home');
             })
             .catch(() => {
                 ElMessage({

@@ -117,7 +117,7 @@ export default {
         const totalBlogs = ref(100);
         const keyword = ref('');
 
-        const isUserLoggedIn = !!userInfoStore.info.userPic;
+        let isUserLoggedIn = !!userInfoStore.info.userPic;
 
         const handleSelect = (command) => {
             router.push(command);
@@ -129,7 +129,6 @@ export default {
         };
 
         const router = useRouter();
-
         const handleCommand = (command) => {
             if (command === 'logout') {
                 // 提示用户
@@ -145,13 +144,14 @@ export default {
                 )
                     .then(async () => {
                         // 清空token和个人信息
-                        tokenStore.removeToken();
-                        userInfoStore.removeInfo();
+                        await tokenStore.removeToken();
+                        await userInfoStore.removeInfo();
                         ElMessage({
                             type: 'success',
                             message: '退出登录成功',
                         });
-                        await router.push('/login');
+                        window.location.reload(); // 刷新页面
+                        isUserLoggedIn = false;
                     })
                     .catch(() => {
                         ElMessage({
