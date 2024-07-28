@@ -30,7 +30,7 @@ import {MdCatalog, MdPreview} from 'md-editor-v3'; // 导入 md-editor-v3 组件
 import 'md-editor-v3/lib/style.css'; // 导入 md-editor-v3 的样式
 import {ref, reactive} from 'vue'; // 导入 Vue 的 ref 和 reactive 函数
 
-const text = ref(''); // 定义一个响应式变量 text，用于存储文件内容
+const text = ref(''); // 定义一个响应式变量 text，用于存储文件内
 const id = 'preview-only'; // 定义 editorId
 const scrollElement = document.documentElement; // 定义 scrollElement，指向 document 的根元素
 

@@ -51,7 +51,7 @@ public class ArticleServiceImpl implements ArticleService {
 //        return pb;
 //    }
     @Override
-    public PageBean list(Integer pageNum, Integer pageSize, Integer categoryId, String state) {
+    public PageBean list(Integer pageNum, Integer pageSize, Integer categoryId, String state, String title) {
         // 创建page-bean对象
         PageBean<Article> pb = new PageBean<>();
 
@@ -63,7 +63,7 @@ public class ArticleServiceImpl implements ArticleService {
         PageHelper.startPage(pageNum, pageSize);
 
         // 调用mapper进行查询
-        List<Article> as = articleMapper.List(userId, categoryId, state);
+        List<Article> as = articleMapper.List(userId, categoryId, state,title);
 
         // 确保返回的是分页结果
         Page<Article> p = (Page<Article>) as;

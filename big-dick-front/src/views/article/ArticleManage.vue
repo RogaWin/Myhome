@@ -53,12 +53,15 @@ articleCategoryList();
 
 //TODO 应该时间顺序来显示
 //文章列表
+const keyword = ref('')
 const articleList = async () => {
+    //关键字搜索
     let params = {
         categoryId:categoryId.value?categoryId.value:null,
         state:state.value?state.value:null,
         pageNum:pageNum.value,
-        pageSize:pageSize.value
+        pageSize:pageSize.value,
+        title:keyword.value?keyword.value:null
     }
     let result = await articleListService(params);
     //渲染视图
@@ -208,7 +211,16 @@ const deleteArticle = (row)=>{
             </div>
         </template>
         <!-- 搜索表单 -->
+
         <el-form inline>
+            <el-form-item label="搜索框">
+                <el-input
+                    v-model="keyword"
+                    style="width: 240px"
+                    placeholder="请输入"
+                    clearable
+                />
+            </el-form-item>
             <el-form-item label="文章分类：">
                 <el-select placeholder="请选择" v-model="categoryId" style="width: 240px">
                     <el-option

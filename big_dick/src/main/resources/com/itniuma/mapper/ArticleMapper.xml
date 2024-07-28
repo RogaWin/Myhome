@@ -12,6 +12,9 @@
             <if test="state != null">
                 and state = #{state}
             </if>
+            <if test="title != null">
+                and title like concat('%',#{title},'%')
+            </if>
                 and create_user = #{userId}
         </where>
     </select>

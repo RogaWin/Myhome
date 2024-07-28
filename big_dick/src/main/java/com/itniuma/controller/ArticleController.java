@@ -45,9 +45,10 @@ public class ArticleController {
         Integer pageNum,
         Integer pageSize,
         @RequestParam(required = false) Integer categoryId,
-        @RequestParam(required = false) String state
+        @RequestParam(required = false) String state,
+        @RequestParam(required = false) String title
     ){
-        PageBean pb = articleService.list(pageNum,pageSize,categoryId,state);
+        PageBean pb = articleService.list(pageNum,pageSize,categoryId,state,title);
         return Result.success(pb);
     }
 

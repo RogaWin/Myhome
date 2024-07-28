@@ -9,7 +9,7 @@ public interface ArticleService{
     void add(Article article);
 
     //分页查询
-    PageBean list(Integer pageNum, Integer pageSize, Integer categoryId, String state);
+    PageBean list(Integer pageNum, Integer pageSize, Integer categoryId, String state,String title);
 
     void update(Article article);
 
