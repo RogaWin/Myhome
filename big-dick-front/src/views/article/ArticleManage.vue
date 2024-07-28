@@ -214,12 +214,7 @@ const deleteArticle = (row)=>{
 
         <el-form inline>
             <el-form-item label="搜索框">
-                <el-input
-                    v-model="keyword"
-                    style="width: 240px"
-                    placeholder="请输入"
-                    clearable
-                />
+
             </el-form-item>
             <el-form-item label="文章分类：">
                 <el-select placeholder="请选择" v-model="categoryId" style="width: 240px">
