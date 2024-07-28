@@ -11,28 +11,35 @@ import {
 } from '@element-plus/icons-vue'
 import avatar from '@/assets/default.png'
 
-
-import {UserInfoService} from "@/api/user.js";
+import { UserInfoService } from "@/api/user.js";
 import useUserInfoStore from "@/stores/userinfo.js";
 const userInfoStore = useUserInfoStore();
-//调用函数，获取用户详细信息
+
+// 调用函数，获取用户详细信息
 const getUserInfo = async () => {
     let result = await UserInfoService();
-    //数据存储到pinia中
+    // 数据存储到 Pinia 中
     userInfoStore.setInfo(result.data);
-
-}
+};
 getUserInfo();
 
-//条目被点击后
-import {useRouter} from "vue-router";
-import {ElMessage, ElMessageBox} from "element-plus";
-import {useTokenStore} from '@/stores/token.js'
+// 条目被点击后
+import { useRouter } from "vue-router";
+import { ElMessage, ElMessageBox } from "element-plus";
+import { useTokenStore } from '@/stores/token.js';
 const tokenStore = useTokenStore();
 const router = useRouter();
-const handleCommand =(command)=>{
-    if(command === 'logout'){
-        //提示用户
+
+// 处理上标签
+const handleSelect = (index) => {
+    if (index.startsWith('/')) {
+        router.push(index);
+    }
+};
+
+const handleCommand = (command) => {
+    if (command === 'logout') {
+        // 提示用户
         ElMessageBox.confirm(
             '您确认要退出吗',
             '温馨提示',
@@ -44,25 +51,25 @@ const handleCommand =(command)=>{
             }
         )
             .then(async () => {
-                //清空token和个人信息
+                // 清空 token 和个人信息
                 tokenStore.removeToken();
                 userInfoStore.removeInfo();
                 ElMessage({
                     type: 'success',
-                    message:'退出登入成功',
-                })
+                    message: '退出登录成功',
+                });
                 await router.push('/login');
             })
             .catch(() => {
                 ElMessage({
                     type: 'info',
-                    message: '用户取消了退出登入',
-                })
-            })
-    }else{
-        router.push('/user/'+command);
+                    message: '用户取消了退出登录',
+                });
+            });
+    } else {
+        router.push('/user/' + command);
     }
-}
+};
 </script>
 
 <template>
@@ -70,11 +77,10 @@ const handleCommand =(command)=>{
         <!-- 左侧菜单 -->
         <el-aside width="200px">
             <div class="el-aside__logo"></div>
-            <el-menu active-text-color="#ffd04b" background-color="#232323"  text-color="#fff"
-                     router>
+            <el-menu active-text-color="#ffd04b" background-color="#232323" text-color="#fff" router>
                 <el-menu-item index="/article/category">
                     <el-icon>
-                        <Management/>
+                        <Management />
                     </el-icon>
                     <span>文章分类</span>
                 </el-menu-item>
@@ -84,10 +90,10 @@ const handleCommand =(command)=>{
                     </el-icon>
                     <span>文章管理</span>
                 </el-menu-item>
-                <el-sub-menu >
+                <el-sub-menu>
                     <template #title>
                         <el-icon>
-                            <UserFilled/>
+                            <UserFilled />
                         </el-icon>
                         <span>个人中心</span>
                     </template>
@@ -116,16 +122,22 @@ const handleCommand =(command)=>{
         <el-container>
             <!-- 头部区域 -->
             <el-header>
-                <div>牛牛：<strong>{{userInfoStore.info.nickname}}</strong></div>
-<!--                下拉-->
+                <el-menu mode="horizontal" @select="handleSelect" class="el-menu-container" router>
+                    <el-menu-item index="/home">首页</el-menu-item>
+                    <el-menu-item index="/blog">博文</el-menu-item>
+                    <el-menu-item index="/category">分类</el-menu-item>
+                    <el-menu-item index="/tools">工具</el-menu-item>
+                    <el-menu-item index="/chat">聊天室</el-menu-item>
+                    <el-menu-item index="/about">关于</el-menu-item>
+                </el-menu>
 
                 <el-dropdown placement="bottom-end" @command="handleCommand">
-                    <span class="el-dropdown__box">
-                        <el-avatar :src="userInfoStore.info.userPic?userInfoStore.info.userPic:avatar" />
-                        <el-icon>
-                            <CaretBottom />
-                        </el-icon>
-                    </span>
+          <span class="el-dropdown__box">
+            <el-avatar :src="userInfoStore.info.userPic || avatar" />
+            <el-icon>
+              <CaretBottom />
+            </el-icon>
+          </span>
                     <template #dropdown>
                         <el-dropdown-menu>
                             <el-dropdown-item command="info" :icon="User">基本资料</el-dropdown-item>
@@ -138,9 +150,6 @@ const handleCommand =(command)=>{
             </el-header>
             <!-- 中间区域 -->
             <el-main>
-<!--                <div style="width: 1290px; height: 570px;border: 1px solid red;">-->
-<!--                    内容展示区-->
-<!--                </div>-->
                 <router-view></router-view>
             </el-main>
             <!-- 底部区域 -->
@@ -151,49 +160,49 @@ const handleCommand =(command)=>{
 
 <style lang="scss" scoped>
 .layout-container {
-  height: 100vh;
+    height: 100vh;
 
-  .el-aside {
-    background-color: #232323;
+    .el-aside {
+        background-color: #232323;
 
-    &__logo {
-      height: 120px;
-      background: url('@/assets/logo.png') no-repeat center / 120px auto;
+        &__logo {
+            height: 120px;
+            background: url('@/assets/logo.png') no-repeat center / 120px auto;
+        }
+
+        .el-menu {
+            border-right: none;
+        }
     }
 
-    .el-menu {
-      border-right: none;
+    .el-header {
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .el-dropdown__box {
+            display: flex;
+            align-items: center;
+
+            .el-icon {
+                color: #999;
+                margin-left: 10px;
+            }
+
+            &:active,
+            &:focus {
+                outline: none;
+            }
+        }
     }
-  }
 
-  .el-header {
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .el-dropdown__box {
-      display: flex;
-      align-items: center;
-
-      .el-icon {
-        color: #999;
-        margin-left: 10px;
-      }
-
-      &:active,
-      &:focus {
-        outline: none;
-      }
+    .el-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: #666;
     }
-  }
-
-  .el-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: #666;
-  }
 }
 </style>

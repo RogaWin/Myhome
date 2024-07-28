@@ -7,11 +7,11 @@ import HomeVue from '@/views/Test/Home.vue'
 </script>
 
 <template>
-<!--<router-view></router-view>-->
+<router-view></router-view>
 <!--<EditorVue></EditorVue>-->
 <!--  <ReaderVue></ReaderVue>-->
 <!--  <SearchVue></SearchVue>-->
-<HomeVue></HomeVue>
+<!--<HomeVue></HomeVue>-->
 </template>
 
 <style scoped>

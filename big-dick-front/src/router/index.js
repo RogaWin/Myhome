@@ -8,6 +8,7 @@ import UserInfoVue from '@/views/user/UserInfo.vue'
 import UserResetPasswordVue from '@/views/user/UserResetPassword.vue'
 import Reader from '@/views/article/Reader.vue'
 import Editor from '@/views/article/Editor.vue'
+import Home from "@/views/Test/Home.vue";
 
 
 
@@ -15,7 +16,7 @@ import Editor from '@/views/article/Editor.vue'
 const routes = [
     {
         path: '/',
-        redirect: '/layout'
+        redirect: '/home'
     },
     {
         path: '/login',
@@ -55,6 +56,10 @@ const routes = [
     {
         path: '/article/editor',
         component: Editor,
+    },
+    {
+        path: '/home',
+        component: Home,
     },
 ]
 //创建路由实例

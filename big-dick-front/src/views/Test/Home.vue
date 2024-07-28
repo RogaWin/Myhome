@@ -1,17 +1,14 @@
 <template>
     <div class="home-page">
         <el-header>
-            <el-menu
-                :default-active="activeIndex"
-                mode="horizontal"
-                @select="handleSelect"
-                class="el-menu-container"
-            >
+            <el-menu :default-active="activeIndex" @select="handleSelect" class="el-menu-container">
                 <div class="menu-left">
-                    <el-menu-item index="1">首页</el-menu-item>
-                    <el-menu-item index="2">博文</el-menu-item>
-                    <el-menu-item index="3">分类</el-menu-item>
-                    <el-menu-item index="4">关于</el-menu-item>
+                    <el-menu-item index="/home">首页</el-menu-item>
+                    <el-menu-item index="/blog">博文</el-menu-item>
+                    <el-menu-item index="/category">分类</el-menu-item>
+                    <el-menu-item index="/tools">工具</el-menu-item>
+                    <el-menu-item index="/chat">聊天室</el-menu-item>
+                    <el-menu-item index="/about">关于</el-menu-item>
                     <el-menu-item>
                         <el-input v-model="keyword" class="search-input" placeholder="请输入" clearable />
                         <el-button :icon="Search" circle />
@@ -26,12 +23,23 @@
               </el-icon>
             </span>
                         <template #dropdown>
-                            <el-dropdown-menu>
-                                <el-dropdown-item command="info" icon="User">基本资料</el-dropdown-item>
-                                <el-dropdown-item command="avatar" icon="Crop">更换头像</el-dropdown-item>
-                                <el-dropdown-item command="resetPassword" icon="EditPen">内容管理</el-dropdown-item>
-                                <el-dropdown-item command="logout" icon="SwitchButton">退出登录</el-dropdown-item>
-                            </el-dropdown-menu>
+                            <div v-if="isUserLoggedIn">
+                                <el-dropdown-menu>
+                                    <el-dropdown-item command="info" :icon="User">基本资料</el-dropdown-item>
+                                    <el-dropdown-item command="avatar" :icon="Crop">更换头像</el-dropdown-item>
+                                    <el-dropdown-item command="manage" :icon="EditPen">内容管理</el-dropdown-item>
+                                    <el-dropdown-item command="logout" :icon="SwitchButton">退出登录</el-dropdown-item>
+                                </el-dropdown-menu>
+                            </div>
+                            <div v-else>
+                                <el-popover placement="top-start" title="Tip:" :width="400" trigger="hover" content="登入后你可以发表文章">
+                                    <template #reference>
+                                        <el-card style="width: 100px">
+                                            <el-button command="login" type="primary" round @click="router.push('/login')">登录</el-button>
+                                        </el-card>
+                                    </template>
+                                </el-popover>
+                            </div>
                         </template>
                     </el-dropdown>
                 </div>
@@ -45,12 +53,7 @@
                         <p>{{ blog.summary }}</p>
                         <el-button type="text">阅读全文</el-button>
                     </el-card>
-                    <el-pagination
-                        background
-                        layout="prev, pager, next"
-                        :total="totalBlogs"
-                        @current-change="handlePageChange"
-                    ></el-pagination>
+                    <el-pagination background layout="prev, pager, next" :total="totalBlogs" @current-change="handlePageChange"></el-pagination>
                 </el-col>
                 <el-col :span="8">
                     <el-card class="sidebar-card">
@@ -69,21 +72,34 @@
 
 <script>
 import { ref } from 'vue';
-import {CaretBottom} from "@element-plus/icons-vue";
+import {CaretBottom, Crop, EditPen, SwitchButton, User} from "@element-plus/icons-vue";
 import useUserInfoStore from "@/stores/userinfo.js";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { useRouter } from "vue-router";
+import { Search } from '@element-plus/icons-vue';
+import { useTokenStore } from "@/stores/token.js";
+import avatar from '@/assets/default.png';
 
-import {Search} from '@element-plus/icons-vue'
+
 export default {
     name: 'HomePage',
     computed: {
-        Search() {
-            return Search
+        SwitchButton() {
+            return SwitchButton
+        },
+        EditPen() {
+            return EditPen
+        },
+        Crop() {
+            return Crop
+        },
+        User() {
+            return User
         }
     },
     components: { CaretBottom },
     setup() {
+        const tokenStore = useTokenStore();
         const userInfoStore = useUserInfoStore();
         const activeIndex = ref('1');
         const blogs = ref([
@@ -99,17 +115,19 @@ export default {
             // 更多热门博文数据
         ]);
         const totalBlogs = ref(100);
-        const avatar = ref('path/to/default/avatar.png');
         const keyword = ref('');
 
-        const handleSelect = (key) => {
-            console.log(`Selected ${key}`);
+        const isUserLoggedIn = !!userInfoStore.info.userPic;
+
+        const handleSelect = (command) => {
+            router.push(command);
         };
 
         const handlePageChange = (page) => {
             console.log(`Page changed to ${page}`);
             // 这里可以添加代码来更新博客列表数据
         };
+
         const router = useRouter();
 
         const handleCommand = (command) => {
@@ -138,15 +156,21 @@ export default {
                     .catch(() => {
                         ElMessage({
                             type: 'info',
-                            message: '用户取消了退出登录',
+                            message: '出错啦',
                         });
                     });
-            } else {
+            }
+            else if(command==="manage"){
+                router.push('/article/' + command);
+            }
+            else {
                 router.push('/user/' + command);
             }
         };
 
         return {
+            router,
+            isUserLoggedIn,
             keyword,
             userInfoStore,
             activeIndex,
@@ -154,6 +178,8 @@ export default {
             popularBlogs,
             totalBlogs,
             avatar,
+            Search,
+            CaretBottom, Crop, EditPen, SwitchButton, User,
             handleSelect,
             handleCommand,
             handlePageChange,
@@ -203,8 +229,6 @@ export default {
     margin-bottom: 20px;
 }
 
-
-
 .el-card h2 {
     font-size: 18px;
     margin: 0 0 10px;
@@ -214,5 +238,4 @@ export default {
     font-size: 14px;
     color: #666;
 }
-
 </style>
