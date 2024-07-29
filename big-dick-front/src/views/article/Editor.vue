@@ -172,7 +172,7 @@ const reback = ()=>{
 }
 
 .md-editor {
-    height: 100%;
+    height: 99%;
     width: 100%;
 }
 
