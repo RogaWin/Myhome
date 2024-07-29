@@ -153,7 +153,7 @@ const handleCommand = (command) => {
                 <router-view></router-view>
             </el-main>
             <!-- 底部区域 -->
-            <el-footer>大事件 ©2023 Created by 黑马程序员</el-footer>
+            <el-footer>傻了莫 ©2024 Created by 牛牛</el-footer>
         </el-container>
     </el-container>
 </template>

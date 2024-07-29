@@ -16,7 +16,7 @@ const useUserInfoStore = defineStore('userinfo',()=>{
     }
 },
     {
-        persist:true
+        LocalStorage:true
     }
 )
 
