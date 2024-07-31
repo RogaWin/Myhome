@@ -19,7 +19,14 @@ export default defineConfig({
         target: 'http://localhost:8080',//后台服务所在源
         changeOrigin: true,//修改源
         rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      '/file': {
+        target: 'https://big-big-dick.oss-cn-shenzhen.aliyuncs.com', // 新的外部URL
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/file/, '') // 确保去掉 /external 前缀
       }
-    }
+    },
+
+
   }
 })

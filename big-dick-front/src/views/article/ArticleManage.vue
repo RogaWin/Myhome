@@ -39,7 +39,6 @@ const onCurrentChange = (num) => {
 
 //获取所有文章分类函数
 import {
-    articleAddService,
     articleCategoryListService, articleDeleteService,
     articleListService,
     articleUpdateService
@@ -100,30 +99,33 @@ import {useTokenStore} from "@/stores/token.js";
 const tokenStore = useTokenStore();
 
 //上传成功的回调函数
-const uploadSuccess = (result)=>{
-    articleModel.value.coverImg=result.data;
-    console.log(result.data);
-}
+// const uploadSuccess = (result)=>{
+//     articleModel.value.coverImg=result.data;
+//     console.log(result.data);
+// }
+//
+// //添加文章
+// import {ElMessage, ElMessageBox} from "element-plus";
+// import EditorVue from "@/App.vue";
+// //定义变量控制标题
+// const title = ref('');
 
-//添加文章
-import {ElMessage, ElMessageBox} from "element-plus";
-import EditorVue from "@/App.vue";
-//定义变量控制标题
-const title = ref('');
+// const addArticle = async (clickState)=>{
+//     //发布状态复制
+//     articleModel.value.state=clickState;
+//     //调用接口
+//     await articleAddService(articleModel.value);
+//
+//     ElMessage.success('添加成功');
+//
+//     //抽屉消失
+//     visibleDrawer.value=false;
+//     await articleList();
+//
+// }
 
-const addArticle = async (clickState)=>{
-    //发布状态复制
-    articleModel.value.state=clickState;
-    //调用接口
-    await articleAddService(articleModel.value);
+//使用Editor编辑
 
-    ElMessage.success('添加成功');
-
-    //抽屉消失
-    visibleDrawer.value=false;
-    await articleList();
-
-}
 //显示编辑分类弹窗
 // const showDrawer = (row) => {
 //     visibleDrawer.value = true;
@@ -140,10 +142,29 @@ const addArticle = async (clickState)=>{
 // }
 
 
+
+import {useArticleStore} from "@/stores/article.js";
+import {ElMessage, ElMessageBox} from "element-plus";
+const articleStore = useArticleStore();
+
+const userAdd =async (row) => {
+    await articleStore.removeArticle();
+    await router.push('/article/editor')
+}
+
 //进入新的Editor
-const userEdit = (row) => {
-    title.value = '编辑文章';
-    router.push('/article/editor')
+const userEdit = async (row) => {
+    //数据拷贝
+    articleModel.value.title=row.title;
+    articleModel.value.categoryId=row.categoryId;
+    articleModel.value.coverImg=row.coverImg;
+    articleModel.value.content=row.content;
+    articleModel.value.state=row.state;
+    //扩展属性将来要传递给后台
+    articleModel.value.id=row.id;
+    await articleStore.setArticle(articleModel.value);
+    await router.push('/article/editor');
+
 }
 
 
@@ -181,6 +202,7 @@ const deleteArticle = (row)=>{
             type: 'warning',
             center: true,
         }
+
     )
         .then(async () => {
             let result = await articleDeleteService(row.id);
@@ -200,24 +222,13 @@ const deleteArticle = (row)=>{
 
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
 <template>
     <el-card class="page-container">
         <template #header>
             <div class="header">
                 <span>文章管理</span>
                 <div class="extra">
-                    <el-button type="primary" @click="clearData()">添加文章</el-button>
+                    <el-button type="primary" @click="userAdd">添加文章</el-button>
                 </div>
             </div>
         </template>
@@ -262,7 +273,7 @@ const deleteArticle = (row)=>{
             <el-table-column label="状态" prop="state"></el-table-column>
             <el-table-column label="操作" width="100">
                 <template #default="{ row }">
-                    <el-button :icon="Edit" circle plain type="primary" @click="userEdit()"></el-button>
+                    <el-button :icon="Edit" circle plain type="primary" @click="userEdit(row)"></el-button>
                     <el-button :icon="Delete" circle plain type="danger" @click="deleteArticle(row)"></el-button>
                 </template>
             </el-table-column>
@@ -337,8 +348,8 @@ const deleteArticle = (row)=>{
 .avatar-uploader {
     :deep {
         .avatar {
-            width: 178px;
-            height: 178px;
+            width: 100px;
+            height: 100px;
             display: block;
         }
 

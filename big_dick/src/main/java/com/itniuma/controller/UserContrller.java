@@ -56,7 +56,7 @@ public class UserContrller {
             String token = JwtUtil.genToken(claims);
             //token存到redis中
             ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
-            operations.set(token,token,1, TimeUnit.HOURS);
+            operations.set(token,token,12, TimeUnit.HOURS);
             return Result.success(token);
         }
         return Result.error("密码错误");
