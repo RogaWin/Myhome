@@ -10,7 +10,7 @@ import { CaretBottom, Crop, EditPen, SwitchButton, User, Plus } from '@element-p
 import { useRouter } from "vue-router";
 import { useTokenStore } from "@/stores/token.js";
 import Reader from "@/views/article/EasyReader.vue";
-import {articleCategoryListService} from "@/api/article.js";
+import {articleAddService, articleCategoryListService, articleUpdateService} from "@/api/article.js";
 import  avatar from '@/assets/avatar.jpg';
 
 
@@ -20,32 +20,36 @@ const userInfoStore = useUserInfoStore();
 
 let inputTitle = ref('');
 const content = ref('');
-import {ElMessage} from "element-plus";
+import {ElLoading, ElMessage, ElMessageBox} from "element-plus";
 
 
 
 import {useArticleStore} from "@/stores/article.js";
 const articleStore = useArticleStore();
+//发布文章还是修改文章
+let title = ref('');
 
+
+let fileName=ref('');
 const fetchFileContent = async () => {
     try {
+        title="添加文章";
         const parts = articleStore.article.content.split('/');
-        const fileName ='/file/'+parts[parts.length-1];
+        fileName =parts[parts.length-1];
         console.log(fileName)
-        const response = await fetch(fileName) // 通过代理获取新的外部文件内容
+        const response = await fetch('/file/'+fileName) // 通过代理获取新的外部文件内容
         if (response.ok) {
+            inputTitle.value = articleStore.article.title;
+            title="编辑文章";
             content.value = await response.text()
         } else {
-            console.log('目前文章无内容:', response.statusText)
+            console.error('Error fetching file:', error)
         }
     } catch (error) {
         console.error('Error fetching file:', error)
     }
 }
 fetchFileContent()
-const editorInit = ()=>{
-
-}
 
 
 // Watch content changes and save to localStorage
@@ -76,21 +80,46 @@ const exportFile = () => {
 
 // 保存功能
 const saveContent = () => {
-    console.log('Content saved:', content.value);
+    console.log('Content saved:', articleStore.article.content);
 };
 
 const handleCommand = (command) => {
-    console.log('Command:', command);
-    // Handle commands here
+    if (command === 'logout') {
+        // 提示用户
+        ElMessageBox.confirm(
+            '您确认要退出吗',
+            '温馨提示',
+            {
+                confirmButtonText: '确认',
+                cancelButtonText: '取消',
+                type: 'warning',
+                center: true,
+            }
+        )
+            .then(async () => {
+                // 清空 token 和个人信息
+                tokenStore.removeToken();
+                userInfoStore.removeInfo();
+                ElMessage({
+                    type: 'success',
+                    message: '退出登录成功',
+                });
+                await router.push('/home');
+            })
+            .catch(() => {
+                ElMessage({
+                    type: 'info',
+                    message: '用户取消了退出登录',
+                });
+            });
+    } else {
+        router.push('/user/' + command);
+    }
 };
 
 // 返回文章管理界面
 const router = useRouter();
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-
-
+import {uploadFileService,deleteFileService} from "@/api/file.js";
 
 const reBack = () => {
     router.push('/article/manage');
@@ -109,19 +138,103 @@ const tokenStore = useTokenStore();
 // 发布文章弹出抽屉
 const visibleDrawer = ref(false);
 
+
+
+
 const publishArticle = () => {
     articleModel.value.title = inputTitle.value;
-    articleModel.value.content = content.value;
+    articleModel.value.content = articleStore.article.content;
+    articleModel.value.coverImg = articleStore.article.coverImg;
+    articleModel.value.state=articleStore.article.state;
+    articleModel.value.categoryId=articleStore.article.categoryId;
+    articleModel.value.id=articleStore.article.id;
     visibleDrawer.value = true;
 };
 
+// const addArticle = async (clickState) => {
+//
+//
+//
+//     articleModel.value.title = inputTitle;
+//     articleModel.value.state = clickState;
+//     console.log(articleModel.value)
+//     await articleAddService(articleModel.value);
+//     ElMessage.success('添加成功');
+//     visibleDrawer.value = false;
+//     await articleList();
+// };
+
+
+
 const addArticle = async (clickState) => {
-    articleModel.value.state = clickState;
-    await articleAddService(articleModel.value);
-    ElMessage.success('添加成功');
-    visibleDrawer.value = false;
-    await articleList();
+    try {
+        const loadingInstance = ElLoading.service({ fullscreen: true });
+        // 将文章内容打包为 Markdown 文件
+        const markdownContent = `# ${inputTitle.value}\n\n${content.value}`;
+        const blob = new Blob([markdownContent], { type: 'text/markdown' });
+        const file = new File([blob], `${inputTitle.value}.md`, { type: 'text/markdown' });
+
+        // 上传文件并获取 URL
+        const formData = new FormData();
+        formData.append('file', file);
+        const uploadResponse = await uploadFileService(formData); // 这里假设 `uploadFileService` 是处理文件上传的服务
+        const fileUrl = uploadResponse.data; // 根据实际的响应结构调整
+
+        // 设置文章模型
+        articleModel.value.title = inputTitle.value;
+        articleModel.value.content = fileUrl; // 将文件 URL 存储在内容字段
+        articleModel.value.state = clickState;
+        // 将文章模型发送到后端服务
+        console.log(articleModel.value);
+        await articleAddService(articleModel.value);
+        ElMessage.success('添加成功');
+        visibleDrawer.value = false;
+    } catch (error) {
+        ElMessage.error('添加失败，请重试');
+        console.error(error);
+    } finally {
+        ElLoading.service().close();
+        await router.push('/article/manage')
+    }
 };
+
+const updateArticle = async (clickState) => {
+    try {
+        await deleteFileService(fileName.value);
+        const loadingInstance = ElLoading.service({fullscreen: true});
+        // 将文章内容打包为 Markdown 文件
+        const markdownContent = `# ${content.value}`;
+        console.log(content.value)
+        const blob = new Blob([markdownContent], {type: 'text/markdown'});
+        const file = new File([blob], `${inputTitle.value}.md`, {type: 'text/markdown'});
+
+        // 上传文件并获取 URL
+        const formData = new FormData();
+        formData.append('file', file);
+        const uploadResponse = await uploadFileService(formData); // 这里假设 `uploadFileService` 是处理文件上传的服务
+        const fileUrl = uploadResponse.data; // 根据实际的响应结构调整
+
+        // 设置文章模型
+        articleModel.value.title = inputTitle.value;
+        articleModel.value.content = fileUrl; // 将文件 URL 存储在内容字段
+        articleModel.value.state = clickState;
+        // 将文章模型发送到后端服务
+        console.log(articleModel.value);
+        await articleUpdateService(articleModel.value);
+        ElMessage.success('修改成功');
+        await articleStore.setArticle(articleModel.value);
+        visibleDrawer.value = false;
+    }
+    catch (error) {
+        ElMessage.error('添加失败，请重试');
+        console.error(error);
+    } finally {
+        ElLoading.service().close();
+    }
+
+}
+
+
 
 const uploadSuccess = (result) => {
     articleModel.value.coverImg = result.data;
@@ -138,6 +251,10 @@ const articleCategoryList = async () => {
 }
 //获取所有文章
 articleCategoryList();
+
+
+
+
 
 </script>
 
@@ -193,7 +310,7 @@ articleCategoryList();
             </pane>
         </splitpanes>
         <!-- 抽屉 -->
-        <el-drawer v-model="visibleDrawer" title="发布文章" direction="rtl" size="50%">
+        <el-drawer v-model="visibleDrawer" :title=title direction="rtl" size="50%">
             <!-- 添加文章表单 -->
             <el-form :model="articleModel" label-width="100px">
                 <el-form-item label="文章标题">

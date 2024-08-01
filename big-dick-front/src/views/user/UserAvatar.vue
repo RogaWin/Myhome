@@ -20,9 +20,9 @@ import {ElMessage} from "element-plus";
 
 const updateAvatar = async () => {
     //更新头像
-    let result = await userAvatarUpdateService()
+    let result = await userAvatarUpdateService(imgUrl.value)
+    console.log(imgUrl.value)
     ElMessage.success(result.msg?result.msg:'修改成功')
-
     //修改pinia数据
     userinfoStore.info.userPic = imgUrl.value;
 

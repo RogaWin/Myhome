@@ -2,16 +2,13 @@ package com.itniuma.controller;
 
 import com.itniuma.pojo.Result;
 import com.itniuma.utils.AliOssUtil;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.UUID;
 
 @RestController
-public class FileUploadController {
+public class FileController {
 
     @PostMapping(value = "/upload")
     public Result upload(MultipartFile file) throws Exception {
@@ -22,5 +19,11 @@ public class FileUploadController {
         //file.transferTo(new File("A:\\桌面\\files\\"+fileName));
         String url = AliOssUtil.uploadFile(fileName,file.getInputStream());
         return Result.success(url);
+    }
+
+    @PostMapping(value = "/deleteFile")
+    public Result deleteFile(@RequestBody String url) throws Exception {
+        AliOssUtil.deleteFile(url);
+        return Result.success();
     }
 }
