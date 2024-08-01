@@ -18,4 +18,13 @@
                 and create_user = #{userId}
         </where>
     </select>
+    <select id="ListAll" resultType="com.itniuma.pojo.Article">
+        select * from article
+        <where>
+            <if test="title != null">
+                and title like concat('%',#{title},'%')
+            </if>
+            and state = '已发布'
+        </where>
+    </select>
 </mapper>

@@ -39,3 +39,8 @@ export const articleUpdateService = (articleData) => {
 export const articleDeleteService = (categoryId)=>{
 	return request.delete('/article',{params:{id:categoryId}})
 }
+
+//获得所有已发布的文章
+export const articleListAllService = (params) => {
+	return request.get('/article/listAll',{params:params})
+}

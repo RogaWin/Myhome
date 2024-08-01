@@ -31,6 +31,9 @@ const onSizeChange = (size) => {
     pageSize.value = size
     articleList();
 }
+
+//在要改变时候
+
 //当前页码发生变化，调用此函数
 const onCurrentChange = (num) => {
     pageNum.value = num
@@ -80,9 +83,7 @@ const articleList = async () => {
 }
 articleList();
 
-import Reader from '@/views/article/EasyReader.vue'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
-import {Plus} from '@element-plus/icons-vue'
 import {useRouter} from "vue-router";
 const router = useRouter();
 //控制抽屉是否显示
@@ -95,8 +96,6 @@ const articleModel = ref({
     content:'',
     state:''
 })
-import {useTokenStore} from "@/stores/token.js";
-const tokenStore = useTokenStore();
 
 //上传成功的回调函数
 // const uploadSuccess = (result)=>{
@@ -169,27 +168,16 @@ const userEdit = async (row) => {
 
 
 //文章的修改
-const updateArticle = async (clickState)=>{
-    //发布状态复制
-    articleModel.value.state=clickState;
-    let result = await articleUpdateService(articleModel.value);
-    ElMessage.success(result.msg?result.msg:'修改成功')
-    await articleList();
-    //抽屉消失
-    visibleDrawer.value=false;
-}
+// const updateArticle = async (clickState)=>{
+//     //发布状态复制
+//     articleModel.value.state=clickState;
+//     let result = await articleUpdateService(articleModel.value);
+//     ElMessage.success(result.msg?result.msg:'修改成功')
+//     await articleList();
+//     //抽屉消失
+//     visibleDrawer.value=false;
+// }
 
-const clearData = ()=>{
-    articleModel.value = {
-        title: '',
-        categoryId: '',
-        coverImg: '',
-        content:'\t',
-        state:''
-    }
-    title.value='添加文章'; title.value='添加文章';
-    visibleDrawer.value=true;
-}
 
 //删除文章
 const deleteArticle = (row)=>{

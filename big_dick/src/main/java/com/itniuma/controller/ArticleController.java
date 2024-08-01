@@ -70,4 +70,16 @@ public class ArticleController {
         Article article = articleService.findById(id);
         return Result.success(article);
     }
+
+    //获取所有已经发布的文章列表
+    @GetMapping(value = "/listAll")
+    public Result<PageBean<Article>> listAll(
+            Integer pageNum,
+            Integer pageSize,
+            @RequestParam(required = false) String title
+            )
+    {
+        PageBean pb = articleService.listAll(pageNum,pageSize,title);
+        return Result.success(pb);
+    }
 }

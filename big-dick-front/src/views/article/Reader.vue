@@ -6,8 +6,6 @@
                 <!-- 固定的侧边栏，宽度为250px -->
                 <el-aside width="250px" class="fixed-section">
                     <el-scrollbar class="scrollbar-demo-item">
-                        <!-- 文件上传输入框，调用 handleFileUpload 方法处理文件上传 -->
-                        <input type="file" @change="handleFileUpload"/>
                         <!-- 目录标题 -->
                         <span class="section-font">目录</span>
                         <!-- MdCatalog 组件，用于显示目录，绑定事件和参数 -->
@@ -18,7 +16,7 @@
                 <el-main class="main-section">
                     <!-- MdPreview 组件，用于预览文件内容 -->
                     <span class="section-font">内容</span>
-                    <MdPreview :editorId="id" :modelValue="text"/>
+                    <MdPreview :editorId="id" :modelValue="content"/>
                 </el-main>
             </el-container>
         </div>
@@ -28,35 +26,33 @@
 <script setup>
 import {MdCatalog, MdPreview} from 'md-editor-v3'; // 导入 md-editor-v3 组件
 import 'md-editor-v3/lib/style.css'; // 导入 md-editor-v3 的样式
-import {ref, reactive} from 'vue'; // 导入 Vue 的 ref 和 reactive 函数
+import {ref, reactive} from 'vue';
+import {useArticleStore} from "@/stores/article.js"; // 导入 Vue 的 ref 和 reactive 函数
 
-const text = ref(''); // 定义一个响应式变量 text，用于存储文件内
+
 const id = 'preview-only'; // 定义 editorId
 const scrollElement = document.documentElement; // 定义 scrollElement，指向 document 的根元素
-
-
-// 处理文件上传的函数
-const handleFileUpload = (event) => {
-    // 获取用户上传的第一个文件
-    const file = event.target.files[0];
-    if (file) {
-        // 创建一个 FileReader 对象
-        const reader = new FileReader();
-        // 以文本形式读取文件内容
-        reader.readAsText(file);
-        // 定义文件读取完成后的回调函数
-        reader.onload = (e) => {
-            // 将读取的文件内容赋值给 text
-            text.value = e.target.result;
-        };
+const articleStore = useArticleStore();
+let fileName = ref('');
+const content = ref('');
+const fetchFileContent = async () => {
+    try {
+        const parts = articleStore.article.content.split('/');
+        fileName =parts[parts.length-1];
+        console.log(fileName)
+        const response = await fetch('/file/'+fileName) // 通过代理获取新的外部文件内容
+        if (response.ok) {
+            content.value = await response.text()
+        } else {
+            console.error('Error fetching file:', error)
+        }
+    } catch (error) {
+        console.error('Error fetching file:', error)
     }
-};
+}
+fetchFileContent()
+// 处理文件上传的函数
 
-// 定义一个响应式对象 state
-const state = reactive({
-    text: '', // 用于存储文本内容
-    catalogList: [] // 用于存储目录列表
-});
 </script>
 
 <style scoped>

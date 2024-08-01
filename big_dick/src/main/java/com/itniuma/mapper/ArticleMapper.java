@@ -24,4 +24,6 @@ public interface ArticleMapper {
 
     @Select("select id, title, content, cover_img, state, category_id, create_user, create_time, update_time from article where id = #{id}")
     Article findById(Integer id);
+
+    List<Article> ListAll(String title);
 }

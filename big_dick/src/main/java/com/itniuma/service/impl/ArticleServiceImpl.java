@@ -54,7 +54,6 @@ public class ArticleServiceImpl implements ArticleService {
     public PageBean list(Integer pageNum, Integer pageSize, Integer categoryId, String state, String title) {
         // 创建page-bean对象
         PageBean<Article> pb = new PageBean<>();
-
         // 开启分页查询
         Map<String, Object> map = ThreadLocalUtil.get();
         Integer userId = (Integer) map.get("id");
@@ -88,6 +87,23 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Article findById(Integer id) {
         return articleMapper.findById(id);
+    }
+
+    @Override
+    public PageBean listAll(Integer pageNum, Integer pageSize, String title) {
+        PageBean<Article> pb = new PageBean<>();
+        // 分页查询之前开启分页
+        PageHelper.startPage(pageNum, pageSize);
+        // 调用mapper进行查询
+        List<Article> as = articleMapper.ListAll(title);
+
+        // 确保返回的是分页结果
+        Page<Article> p = (Page<Article>) as;
+
+        // 填充到PageBean
+        pb.setTotal(p.getTotal());
+        pb.setItems(p.getResult());
+        return pb;
     }
 
 }

@@ -112,7 +112,11 @@ const handleCommand = (command) => {
                     message: '用户取消了退出登录',
                 });
             });
-    } else {
+    }
+    else if(command === 'manage'){
+        router.push('/article/manage');
+    }
+    else {
         router.push('/user/' + command);
     }
 };
@@ -352,6 +356,7 @@ articleCategoryList();
                 </el-form-item>
             </el-form>
         </el-drawer>
+
     </div>
 </template>
 

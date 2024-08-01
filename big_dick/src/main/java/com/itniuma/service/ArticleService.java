@@ -16,4 +16,7 @@ public interface ArticleService{
     void delete(Integer id);
 
     Article findById(Integer id);
+
+
+    PageBean listAll(Integer pageNum, Integer pageSize, String title);
 }
