@@ -103,6 +103,14 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+      <!-- 其他依赖 -->
+      <dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+        <version>3.8.0</version> <!-- 请根据实际需要选择合适的版本 -->
+      </dependency>
+
   </dependencies>
   <build>
     <plugins>

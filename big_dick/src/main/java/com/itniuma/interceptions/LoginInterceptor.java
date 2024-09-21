@@ -37,7 +37,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             return false;
             //如果令牌验证失败，则返回401,不放行
         }
-
     }
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
