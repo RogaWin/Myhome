@@ -29,7 +29,6 @@ public class ArticleController {
 //        return Result.success("所有的文章数据......");
 //    }
 //
-
     @Autowired
     private ArticleService articleService;
 
@@ -51,7 +50,6 @@ public class ArticleController {
         PageBean pb = articleService.list(pageNum,pageSize,categoryId,state,title);
         return Result.success(pb);
     }
-
     //更新文章
     @PutMapping
     public Result update(@RequestBody @Validated Article article){
