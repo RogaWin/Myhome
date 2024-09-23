@@ -53,7 +53,7 @@ export default {
         const totalBlogs = ref(100);
         const keyword = ref('');
 
-        let isUserLoggedIn = !!userInfoStore.info.userPic;
+        let isUserLoggedIn = userInfoStore.info.userPic!=null;
 
         const handleSelect = (command) => {
             router.push(command);
@@ -86,8 +86,9 @@ export default {
                             type: 'success',
                             message: '退出登录成功',
                         });
-                        window.location.reload(); // 刷新页面
                         isUserLoggedIn = false;
+                        window.location.reload(); // 刷新页面
+
                     })
                     .catch(() => {
                         ElMessage({
@@ -185,7 +186,7 @@ export default {
                     <el-menu-item index="/home">首页</el-menu-item>
                     <el-menu-item index="/blog">博文</el-menu-item>
                     <el-menu-item index="/category">分类</el-menu-item>
-                    <el-menu-item index="/tools">工具</el-menu-item>
+                    <el-menu-item index="/tools">导航</el-menu-item>
                     <el-menu-item index="/chat">聊天室</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
 

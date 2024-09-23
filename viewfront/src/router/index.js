@@ -9,6 +9,7 @@ import UserResetPasswordVue from '@/views/user/UserResetPassword.vue'
 import Reader from '@/views/article/Reader.vue'
 import Editor from '@/views/article/Editor.vue'
 import Home from "@/views/Home.vue";
+import Tool from "@/views/tool/Tool.vue";
 
 
 
@@ -68,6 +69,18 @@ const routes = [
         name: 'Home',
         path: '/home',
         component: Home,
+    },
+    //添加工具组件
+    {
+        name: 'Tool',
+        path: '/tools',
+        component: Tool,
+    },
+    //添加about
+    {
+        name: 'About',
+        path: '/about',
+        component: () => import('@/views/about/About.vue'),
     },
 ]
 //创建路由实例

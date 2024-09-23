@@ -1,7 +1,6 @@
 <script setup>
 import EditorVue from '@/views/article/Editor.vue'
 import ReaderVue from '@/views/article/Reader.vue'
-import SearchVue from '@/views/Test/Search.vue'
 import HomeVue from '@/views/Home.vue'
 
 

@@ -7,10 +7,10 @@
     <version>3.1.3</version>
   </parent>
   <groupId>com.itheima</groupId>
-  <artifactId>big-event</artifactId>
+  <artifactId>bkreply</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>big-event</name>
+  <name>bkreply</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
