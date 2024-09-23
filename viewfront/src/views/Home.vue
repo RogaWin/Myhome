@@ -180,7 +180,7 @@ export default {
 
 <template>
     <div class="home-page">
-        <el-header>
+        <el-header class="header-container">
             <el-menu :default-active="activeIndex" @select="handleSelect" class="el-menu-container">
                 <div class="menu-left">
                     <el-menu-item index="/home">首页</el-menu-item>
@@ -189,13 +189,6 @@ export default {
                     <el-menu-item index="/tools">导航</el-menu-item>
                     <el-menu-item index="/chat">聊天室</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
-
-<!--                    <el-menu-item index="/home">首页</el-menu-item>-->
-<!--                    <el-menu-item index="/">博文</el-menu-item>-->
-<!--                    <el-menu-item index="/">分类</el-menu-item>-->
-<!--                    <el-menu-item index="/">工具</el-menu-item>-->
-<!--                    <el-menu-item index="/">聊天室</el-menu-item>-->
-<!--                    <el-menu-item index="/">关于</el-menu-item>-->
                     <el-menu-item>
                         <el-input v-model="keyword" class="search-input" placeholder="请输入" clearable />
                         <el-button :icon="Search" circle @click="articleListAll()" />
@@ -235,26 +228,26 @@ export default {
         <el-main>
             <el-row :gutter="20">
                 <el-col :span="16">
-                    <el-card v-for="(blog, index) in articles" :key="index" class="blog-card">
-                        <h2>{{ blog.title }}</h2>
+                    <el-card v-for="(blog, index) in articles" :key="index" class="blog-card animated-card">
+                        <h2 class="blog-title">{{ blog.title }}</h2>
                         <div class="demo-image__placeholder">
                             <div class="block">
-                                <el-image :src="blog.coverImg" />
+                                <el-image :src="blog.coverImg" class="blog-image" />
                             </div>
                         </div>
-                        <el-button type="text"  @click="readArticle(index)">阅读全文</el-button>
+                        <el-button type="text" class="read-more-btn" @click="readArticle(index)">阅读全文</el-button>
                     </el-card>
                     <!-- 分页条 -->
                     <el-pagination v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[3, 5, 10, 15]"
                                    layout="jumper, total, sizes, prev, pager, next" background :total="total" @size-change="onSizeChange"
-                                   @current-change="onCurrentChange" style="margin-top: 20px; justify-content: flex-end" />
+                                   @current-change="onCurrentChange" class="pagination-bar" />
                 </el-col>
                 <el-col :span="8">
-                    <el-card class="sidebar-card">
-                        <h3>热门博文</h3>
-                        <el-list>
-                            <el-list-item v-for="(item, index) in popularBlogs" :key="index">
-                               <h4> {{ item.title }}</h4>
+                    <el-card class="sidebar-card animated-sidebar">
+                        <h3 class="sidebar-title">热门博文</h3>
+                        <el-list class="popular-blogs-list">
+                            <el-list-item v-for="(item, index) in popularBlogs" :key="index" class="popular-blog-item">
+                                <h4 class="popular-blog-title">{{ item.title }}</h4>
                             </el-list-item>
                         </el-list>
                     </el-card>
@@ -265,72 +258,111 @@ export default {
 </template>
 
 <style scoped>
-.demo-image__placeholder .block {
-    text-align: center;
-    border-right: solid 1px var(--el-border-color);
-    display: inline-block;
-    width: 25%;
-    box-sizing: border-box;
-    vertical-align: top;
-}
-.demo-image__placeholder .demonstration {
-    display: block;
-    color: var(--el-text-color-secondary);
-    font-size: 14px;
-    margin-bottom: 0px;
-}
-.demo-image__placeholder .el-image {
-    max-width: 100%;
-    max-height: 100%;
-}
-
 .home-page {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
     padding: 20px;
-    background-color: #f0f2f5;
+    min-height: 100vh;
 }
-
+.header-container {
+    background: #212121;
+    border-bottom: 2px solid #ffffff33;
+}
 .el-menu-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 30px;
 }
-
-.menu-left {
+.menu-left, .menu-right {
     display: flex;
     align-items: center;
 }
-
+.menu-left .el-menu-item, .menu-right .el-menu-item {
+    /*改为灰色*/
+    color: #5b5656;
+    transition: all 0.3s ease;
+}
+.menu-left .el-menu-item:hover {
+    color: #00adb5;
+    background-color: transparent;
+}
 .search-input {
-    width: 240px;
-    margin-left: 20px;
+    width: 200px;
+    margin-right: 10px;
 }
-
-.menu-right {
-    display: flex;
-    align-items: center;
-}
-
-.el-dropdown__box {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
 .blog-card {
-    margin-bottom: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+.blog-title {
+    color: #ffffff;
+    font-size: 1.5em;
+}
+.blog-image {
+    border-radius: 10px;
+}
+.read-more-btn {
+    color: #00adb5;
+}
+.pagination-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
 .sidebar-card {
-    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: none;
+    padding: 20px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+.sidebar-title {
+    color: #ffffff;
+    font-size: 1.2em;
+}
+.popular-blogs-list {
+    margin-top: 10px;
+}
+.popular-blog-item {
+    border-bottom: 1px solid #ffffff33;
+    padding: 10px 0;
+}
+.popular-blog-title {
+    color: #00adb5;
+}
+.animated-card {
+    animation: fadeInUp 0.5s ease-in-out;
+}
+.animated-sidebar {
+    animation: fadeInRight 0.5s ease-in-out;
 }
 
-.el-card h2 {
-    font-size: 18px;
-    margin: 0 0 10px;
+/* 自定义动画 */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-
-.el-card p {
-    font-size: 14px;
-    color: #666;
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 </style>

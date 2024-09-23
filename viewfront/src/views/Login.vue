@@ -37,17 +37,44 @@ const isRegister = ref(false), registerData = ref({
 
 //调用后台接口,完成注册
 import {userRegisterService, userLoginService, UserInfoService} from '@/api/user.js'
-const register =async () => {
-    //registerData是想响应式对象
-    // let result = await userRegisterService(registerData.value);
-    // if(result.code === 0){
-    //     alert(result.msg?result.msg:'注册成功');
-    // }else{
-    //     alert("注册失败")
-    // }
-    let result = await userRegisterService(registerData.value);
-    ElMessage.success(result.msg?result.msg:'注册成功');
-}
+const register = async () => {
+    try {
+        console.log("Calling register service...");
+        //检查registerData是否都不为空
+        if (!registerData.value.username || !registerData.value.password || !registerData.value.repeatPassword) {
+            ElMessage.error('请输入完整的注册信息');
+            return;
+        }
+        //检查数据是否相等
+        if (registerData.value.password !== registerData.value.repeatPassword) {
+            ElMessage.error('两次输入密码不一致');
+            return;
+        }
+        // 调用注册服务
+        let axiosResponse = await userRegisterService(registerData.value);
+
+        // 打印响应内容，确认服务端返回的完整结构
+        console.log("Full axiosResponse:", JSON.stringify(axiosResponse, null, 2));
+
+        // 检查是否需要解构到 data 层
+        const response = axiosResponse.data || axiosResponse;
+        const { code, message } = response;
+
+        // 如果 code 不等于 0，表示注册失败，抛出错误
+        if (code !== 0) {
+            ElMessage.error(message || '注册失败');
+            return;
+        }
+
+        // 注册成功，显示成功提示
+        ElMessage.success(message || '注册成功');
+    } catch (error) {
+        // 捕获所有异常，并使用 ElMessage 显示错误
+        console.error("An error occurred during registration:", error);
+        ElMessage.error(error.message || '注册失败，发生错误');
+    }
+};
+
 
 //登录函数
 import {useTokenStore} from '@/stores/token.js'
