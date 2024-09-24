@@ -235,7 +235,6 @@ const updateArticle = async (clickState) => {
     } finally {
         ElLoading.service().close();
     }
-
 }
 
 

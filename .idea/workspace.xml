@@ -4,16 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="add 导航">
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="Beautify the page">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/RedisService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/RedisServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/com/itniuma/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/com/itniuma/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/ArticleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/api/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/api/article.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewfront/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewfront/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/article/Editor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/article/Editor.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,35 +66,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;A:/Desktop/repos_git/Myhome/viewfront/src/views/about&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;e61dcc9d149586af88107496e21ad20d&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "A:/Desktop/repos_git/Myhome/viewfront/src/views/about",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "e61dcc9d149586af88107496e21ad20d",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.itniuma.service" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views\about" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.itniuma.config" />
     </key>
   </component>
   <component name="RunManager">
@@ -96,7 +128,8 @@
       <updated>1727068311104</updated>
       <workItem from="1727068315738" duration="13308000" />
       <workItem from="1727097536675" duration="66000" />
-      <workItem from="1727099267952" duration="2636000" />
+      <workItem from="1727099267952" duration="3029000" />
+      <workItem from="1727140882760" duration="8393000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -105,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727091257471</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Beautify the page">
+      <created>1727102063923</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727102063923</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +153,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add 导航" />
-    <option name="LAST_COMMIT_MESSAGE" value="add 导航" />
+    <MESSAGE value="Beautify the page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Beautify the page" />
   </component>
 </project>

@@ -44,3 +44,13 @@ export const articleDeleteService = (categoryId)=>{
 export const articleListAllService = (params) => {
 	return request.get('/article/listAll',{params:params})
 }
+
+//获得文章阅读量
+export const articleViewService = (articleId) => {
+	return request.get('/article/views',{params:{articleId:articleId}})
+}
+
+//增加文章阅读量
+export const articleViewAddService = (articleId) => {
+	return request.post('/article/views',{params:{articleId:articleId}})
+}

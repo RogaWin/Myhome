@@ -228,14 +228,23 @@ export default {
         <el-main>
             <el-row :gutter="20">
                 <el-col :span="16">
-                    <el-card v-for="(blog, index) in articles" :key="index" class="blog-card animated-card">
-                        <h2 class="blog-title">{{ blog.title }}</h2>
-                        <div class="demo-image__placeholder">
-                            <div class="block">
-                                <el-image :src="blog.coverImg" class="blog-image" />
+                    <el-card v-for="(blog, index) in articles" :key="index" class="blog-card animated-card" style="margin-bottom: 20px;">
+                        <!-- 使用flex布局将图片和内容分成左右两部分 -->
+                        <div class="blog-container" style="display: flex; align-items: center;">
+                            <!-- 左侧图片部分 -->
+                            <div style="flex-shrink: 0;">
+                                <el-image :src="blog.coverImg" class="blog-image" style="width: 150px; height: 100px; object-fit: cover;" />
+                            </div>
+                            <!-- 右侧内容部分 -->
+                            <div class="blog-content" style="flex-grow: 1; margin-left: 20px;">
+                                <el-button type="text" class="read-more-btn" @click="readArticle(index)">
+                                    <h2 class="blog-title" style="font-size: 20px; font-weight: bold;">{{ blog.title }}</h2>
+                                </el-button>
+                                <p class="blog-summary">
+                                    {{ blog.introduction }}
+                                </p>
                             </div>
                         </div>
-                        <el-button type="text" class="read-more-btn" @click="readArticle(index)">阅读全文</el-button>
                     </el-card>
                     <!-- 分页条 -->
                     <el-pagination v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[3, 5, 10, 15]"
@@ -258,6 +267,13 @@ export default {
 </template>
 
 <style scoped>
+
+.blog-summary{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #6a7070;
+}
 .home-page {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     padding: 20px;
@@ -303,9 +319,22 @@ export default {
 .blog-title {
     color: #ffffff;
     font-size: 1.5em;
+
+    /* 去掉默认下划线 */
+    text-decoration: none;
+
+    /* 聚焦时显示下划线 */
+    &:focus {
+        text-decoration: underline;
+    }
 }
+
 .blog-image {
     border-radius: 10px;
+/*    固定*/
+    width: 250px;
+/*    固定长度*/
+    height: 150px;
 }
 .read-more-btn {
     color: #00adb5;

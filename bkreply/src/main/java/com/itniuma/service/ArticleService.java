@@ -19,4 +19,6 @@ public interface ArticleService{
 
 
     PageBean listAll(Integer pageNum, Integer pageSize, String title);
+
+
 }

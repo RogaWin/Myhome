@@ -26,4 +26,5 @@ public interface ArticleMapper {
     Article findById(Integer id);
 
     List<Article> ListAll(String title);
+
 }
