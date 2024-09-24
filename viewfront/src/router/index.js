@@ -10,6 +10,7 @@ import Reader from '@/views/article/Reader.vue'
 import Editor from '@/views/article/Editor.vue'
 import Home from "@/views/Home.vue";
 import Tool from "@/views/tool/Tool.vue";
+import Message from "@/views/tool/Message.vue"
 
 
 
@@ -82,6 +83,11 @@ const routes = [
         path: '/about',
         component: () => import('@/views/about/About.vue'),
     },
+    {
+        name: 'Message',
+        path: '/message',
+        component: Message,
+    }
 ]
 //创建路由实例
 const router = createRouter({

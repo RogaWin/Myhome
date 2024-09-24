@@ -27,7 +27,7 @@ export const articleListService = (params) => {
 	return request.get('/article',{params:params})
 }
 
-//TODO 时间格式还有问题
+
 export const articleAddService = (articleData) => {
 	return request.post('/article',articleData)
 }

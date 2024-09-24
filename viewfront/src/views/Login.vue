@@ -116,6 +116,7 @@ const clearRegisterData = () => {
 <template>
     <el-row class="login-page">
         <el-col :span="12" class="bg"></el-col>
+
         <el-col :span="6" :offset="3" class="form">
             <!-- 注册表单 -->
             <el-form ref="form" size="large" autocomplete="off" v-if="isRegister" :rules="rules" :model="registerData">
@@ -173,9 +174,7 @@ const clearRegisterData = () => {
                           跳过只看文章
                         </el-link>
                     </div>
-
                 </el-form-item>
-
             </el-form>
         </el-col>
     </el-row>

@@ -211,7 +211,7 @@ export default {
                     <el-menu-item index="/tools">导航</el-menu-item>
                     <el-menu-item index="/category">分类</el-menu-item>
                     <el-menu-item index="/article/manage">博文</el-menu-item>
-                    <el-menu-item index="/chat">留言</el-menu-item>
+                    <el-menu-item index="/message">留言</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
                     <el-menu-item>
                         <el-input v-model="keyword" class="search-input" placeholder="请输入" clearable />
