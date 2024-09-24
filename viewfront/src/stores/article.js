@@ -16,7 +16,8 @@ export const useArticleStore = defineStore(
             coverImg: '',
             content:'',
             state:'',
-            id:''
+            id:'',
+            createUser:'',
         })
         const setArticle = (newArticle)=>{
             article.value = newArticle //修改Article

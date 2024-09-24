@@ -47,10 +47,9 @@ export const articleListAllService = (params) => {
 
 //获得文章阅读量
 export const articleViewService = (articleId) => {
-	return request.get('/article/views',{params:{articleId:articleId}})
+	return request.get('/article/views',{params:{id:articleId}})
 }
 
-//增加文章阅读量
 export const articleViewAddService = (articleId) => {
-	return request.post('/article/views',{params:{articleId:articleId}})
-}
+	return request.post(`/article/views?id=${articleId}`); // 在 URL 中添加查询参数
+};

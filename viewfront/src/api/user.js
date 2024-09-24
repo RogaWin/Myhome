@@ -34,3 +34,9 @@ export const userAvatarUpdateService = (avatarUrl)=>{
 export const userPasswordUpdateService = (passwordData)=>{
     return request.patch('/user/updatePwd',passwordData);
 }
+
+//根据用户id获取用户信息
+// localhost:8080/user/info?id=29
+export const userInfoByIdService = (userId)=>{
+    return request.get('/user/info',{params:{id:userId}})
+}

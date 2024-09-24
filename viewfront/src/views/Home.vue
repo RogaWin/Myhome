@@ -184,9 +184,9 @@ export default {
             <el-menu :default-active="activeIndex" @select="handleSelect" class="el-menu-container">
                 <div class="menu-left">
                     <el-menu-item index="/home">首页</el-menu-item>
-                    <el-menu-item index="/blog">博文</el-menu-item>
-                    <el-menu-item index="/category">分类</el-menu-item>
                     <el-menu-item index="/tools">导航</el-menu-item>
+                    <el-menu-item index="/category">分类</el-menu-item>
+                    <el-menu-item index="/blog">博文</el-menu-item>
                     <el-menu-item index="/chat">聊天室</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
                     <el-menu-item>

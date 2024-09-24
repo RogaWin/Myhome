@@ -7,6 +7,7 @@ import com.itniuma.service.UserService;
 import com.itniuma.utils.JwtUtil;
 import com.itniuma.utils.Md5Util;
 import com.itniuma.utils.ThreadLocalUtil;
+import io.swagger.annotations.ApiOperation;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,5 +112,12 @@ public class UserContrller {
         ValueOperations<String, String> operations = stringRedisTemplate.opsForValue();
         operations.getOperations().delete(token);
         return Result.success();
+    }
+
+    @ApiOperation(value = "根据id获取用户信息")
+    @GetMapping(value = "/info")
+    public Result<User> info(Integer id){
+        User user = userService.findById(id);
+        return Result.success(user);
     }
 }

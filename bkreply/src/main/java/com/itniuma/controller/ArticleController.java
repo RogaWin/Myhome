@@ -121,7 +121,7 @@ public class ArticleController {
             redisService.markUserAsReadArticle(articleId, userId);
             return Result.success(views);
         } else {
-            return Result.error("用户已阅读过文章");
+            return Result.error(2,"用户已阅读过文章");
         }
     }
 }

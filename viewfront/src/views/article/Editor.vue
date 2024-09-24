@@ -135,7 +135,8 @@ const articleModel = ref({
     categoryId: '',
     coverImg: '',
     content: '',
-    state: ''
+    state: '',
+    introduction: ''
 });
 
 const tokenStore = useTokenStore();
@@ -326,20 +327,27 @@ articleCategoryList();
                     </el-select>
                 </el-form-item>
                 <el-form-item label="文章封面">
-                    <el-upload
-                        class="avatar-uploader"
-                        :auto-upload="true"
-                        :show-file-list="false"
-                        action="/api/upload"
-                        name="file"
-                        :headers="{'Authorization': tokenStore.token}"
-                        :on-success="uploadSuccess"
-                    >
-                        <img v-if="articleModel.coverImg" :src="articleModel.coverImg" class="avatar" alt="上传的图片"/>
-                        <el-icon v-else class="avatar-uploader-icon">
-                            <Plus />
-                        </el-icon>
-                    </el-upload>
+                    <el-row>
+                        <el-col >
+                            <el-upload
+                                class="avatar-uploader"
+                                :auto-upload="true"
+                                :show-file-list="false"
+                                action="/api/upload"
+                                name="file"
+                                :headers="{'Authorization': tokenStore.token}"
+                                :on-success="uploadSuccess"
+                            >
+                                <img v-if="articleModel.coverImg" :src="articleModel.coverImg" class="avatar" alt="上传的图片"/>
+                                <el-icon v-else class="avatar-uploader-icon">
+                                    <Plus />
+                                </el-icon>
+                            </el-upload>
+                        </el-col>
+                        <el-col label="文章简介">
+                            <el-input  v-model="articleModel.introduction" type="textarea" placeholder="请输入简介"  style="width: 100%; min-width: 400px;" />
+                        </el-col>
+                    </el-row>
                 </el-form-item>
                 <el-form-item label="文章内容" >
                     <!-- TODO 嵌入Editor -->

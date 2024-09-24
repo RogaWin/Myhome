@@ -32,7 +32,10 @@ instance.interceptors.response.use(
     result=>{
         if(result.data.code===0){
             return result.data;
-        }else{
+        }else if(result.data.code===2){
+            return result.data;
+        }
+        else{
             //操作失败
             // alert(result.data.msg?result.data.msg:'服务异常');
             ElMessage.error(result.data.msg?result.data.msg:'服务异常');
