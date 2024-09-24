@@ -4,22 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="add readcount function">
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="finished read and editor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/UserContrller.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/UserContrller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/ArticleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/RedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/RedisServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/RedisServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewfront/src/api/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/api/article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/api/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/stores/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/stores/article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/utlis/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/utlis/request.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewfront/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/article/Editor.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/article/Editor.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/article/Reader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/article/Reader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727151756998</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finished read and editor">
+      <created>1727161127865</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727161127865</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +171,7 @@
     <MESSAGE value="add 导航" />
     <MESSAGE value="Beautify the page" />
     <MESSAGE value="add readcount function" />
-    <option name="LAST_COMMIT_MESSAGE" value="add readcount function" />
+    <MESSAGE value="finished read and editor" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished read and editor" />
   </component>
 </project>

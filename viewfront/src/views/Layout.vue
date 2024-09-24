@@ -8,29 +8,30 @@ import {
     EditPen,
     SwitchButton,
     CaretBottom
-} from '@element-plus/icons-vue'
-import avatar from '@/assets/default.png'
+} from '@element-plus/icons-vue';
+import avatar from '@/assets/default.png';
 
 import { UserInfoService } from "@/api/user.js";
 import useUserInfoStore from "@/stores/userinfo.js";
 const userInfoStore = useUserInfoStore();
 
-// 调用函数，获取用户详细信息
+// 使用 async/await 调用异步函数并捕获错误
 const getUserInfo = async () => {
-    let result = await UserInfoService();
-    // 数据存储到 Pinia 中
-    userInfoStore.setInfo(result.data);
+    try {
+        let result = await UserInfoService();
+        userInfoStore.setInfo(result.data); // 数据存储到 Pinia 中
+    } catch (error) {
+        console.error("获取用户信息失败:", error);
+    }
 };
 getUserInfo();
 
-// 条目被点击后
 import { useRouter } from "vue-router";
 import { ElMessage, ElMessageBox } from "element-plus";
 import { useTokenStore } from '@/stores/token.js';
 const tokenStore = useTokenStore();
 const router = useRouter();
 
-// 处理上标签
 const handleSelect = (index) => {
     if (index.startsWith('/')) {
         router.push(index);
@@ -39,9 +40,8 @@ const handleSelect = (index) => {
 
 const handleCommand = (command) => {
     if (command === 'logout') {
-        // 提示用户
         ElMessageBox.confirm(
-            '您确认要退出吗',
+            '您确认要退出吗？',
             '温馨提示',
             {
                 confirmButtonText: '确认',
@@ -51,7 +51,6 @@ const handleCommand = (command) => {
             }
         )
             .then(async () => {
-                // 清空 token 和个人信息
                 tokenStore.removeToken();
                 userInfoStore.removeInfo();
                 ElMessage({
@@ -77,7 +76,7 @@ const handleCommand = (command) => {
         <!-- 左侧菜单 -->
         <el-aside width="200px">
             <div class="el-aside__logo"></div>
-            <el-menu active-text-color="#ffd04b" background-color="#232323" text-color="#fff" router>
+            <el-menu active-text-color="#2D629C" background-color="#232323" text-color="#005" router>
                 <el-menu-item index="/article/category">
                     <el-icon>
                         <Management />
@@ -95,25 +94,25 @@ const handleCommand = (command) => {
                         <el-icon>
                             <UserFilled />
                         </el-icon>
-                        <span>个人中心</span>
+                        <span class="submenu-title">个人中心</span>
                     </template>
                     <el-menu-item index="/user/info">
                         <el-icon>
                             <User />
                         </el-icon>
-                        <span>基本资料</span>
+                        <span class="submenu-item">基本资料</span>
                     </el-menu-item>
                     <el-menu-item index="/user/avatar">
                         <el-icon>
                             <Crop />
                         </el-icon>
-                        <span>更换头像</span>
+                        <span class="submenu-item">更换头像</span>
                     </el-menu-item>
                     <el-menu-item index="/user/resetPassword">
                         <el-icon>
                             <EditPen />
                         </el-icon>
-                        <span>重置密码</span>
+                        <span class="submenu-item">重置密码</span>
                     </el-menu-item>
                 </el-sub-menu>
             </el-menu>
@@ -124,10 +123,10 @@ const handleCommand = (command) => {
             <el-header>
                 <el-menu mode="horizontal" @select="handleSelect" class="el-menu-container" router>
                     <el-menu-item index="/home">首页</el-menu-item>
-                    <el-menu-item index="/blog">博文</el-menu-item>
+                    <el-menu-item index="/tools">导航</el-menu-item>
                     <el-menu-item index="/category">分类</el-menu-item>
-                    <el-menu-item index="/tools">工具</el-menu-item>
-                    <el-menu-item index="/chat">聊天室</el-menu-item>
+                    <el-menu-item index="/article/manage">博文</el-menu-item>
+                    <el-menu-item index="/chat">留言</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
                 </el-menu>
 
@@ -157,13 +156,36 @@ const handleCommand = (command) => {
         </el-container>
     </el-container>
 </template>
-
 <style lang="scss" scoped>
+.submenu-title {
+    color: #00aaff; // 个人中心标题颜色
+}
+
+.submenu-item {
+    color:  #00aaff; // 子菜单项默认颜色
+    transition: color 0.3s;
+
+    &:hover {
+        color: #00aaff; // 悬停时的颜色
+        background: rgba(0, 170, 255, 0.1); // 悬停背景颜色
+    }
+}
+.el-sub-menu__title{
+    color: #00aaff;
+    background-color: #00aaff;
+}
+.el-menu-item{
+    color: #00aaff;
+}
 .layout-container {
     height: 100vh;
 
+    // 背景改为蓝白偏黑
+    background: linear-gradient(135deg, #0e4c92, #ffffff); // 深蓝与白色渐变
+
     .el-aside {
-        background-color: #232323;
+        background: rgba(255, 255, 255, 0.9); // 半透明白色背景
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.3); // 稍微加重阴影
 
         &__logo {
             height: 120px;
@@ -172,22 +194,52 @@ const handleCommand = (command) => {
 
         .el-menu {
             border-right: none;
+            background-color: transparent; // 清除菜单默认背景
+            text-color: #333; // 字体颜色
+
+            .el-menu-item,
+            .el-sub-menu__title {
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    background: rgba(0, 170, 255, 0.4); // 悬停时背景颜色更明显
+                }
+            }
         }
     }
 
     .el-header {
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.9); // 半透明白色背景
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        .el-menu {
+            background-color: transparent;
+
+            .el-menu-item {
+                font-weight: bold; // 字体加粗
+                color: #333;
+
+                &:hover {
+                    color: #0e4c92; // 悬停时的颜色改为深蓝
+                }
+            }
+        }
 
         .el-dropdown__box {
             display: flex;
             align-items: center;
 
             .el-icon {
-                color: #999;
+                color: #666;
                 margin-left: 10px;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: #0e4c92; // 悬停时颜色变化
+                }
             }
 
             &:active,
@@ -197,12 +249,23 @@ const handleCommand = (command) => {
         }
     }
 
+    .el-main {
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8); // 半透明背景
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        border-radius: 8px; // 边角圆润
+        margin: 20px;
+    }
+
     .el-footer {
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 14px;
         color: #666;
+        background: rgba(255, 255, 255, 0.9); // 半透明白色背景
+        padding: 10px;
+        border-radius: 4px;
     }
 }
 </style>

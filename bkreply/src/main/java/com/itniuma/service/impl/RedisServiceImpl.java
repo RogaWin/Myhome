@@ -5,10 +5,11 @@ import com.itniuma.service.RedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.TimeUnit;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class RedisServiceImpl implements RedisService {
@@ -16,60 +17,38 @@ public class RedisServiceImpl implements RedisService {
     private static final Logger logger = LoggerFactory.getLogger(RedisServiceImpl.class);
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
     // 定义 Redis 键的前缀
-    private static final String ARTICLE_VIEWS_KEY = "article:views";
-    private static final String ARTICLE_USERS_KEY_PREFIX = "article:%d:users";
+    private static final String ARTICLE_VIEWS_KEY = "article:views:";
 
-    /**
-     * 获取 Redis 中存储的文章阅读量的键名
-     */
-    private String getArticleViewsKey() {
-        return ARTICLE_VIEWS_KEY;
+    // 获取 Redis 中存储的文章阅读量的键名
+    private String getArticleViewsKey(Integer articleId) {
+        return ARTICLE_VIEWS_KEY + articleId;
     }
 
-    /**
-     * 获取某篇文章已阅读用户集合的键名
-     */
-    private String getArticleUsersKey(Integer articleId) {
-        return String.format(ARTICLE_USERS_KEY_PREFIX, articleId);
-    }
-
-    /**
-     * 获取文章阅读量
-     *
-     * @param articleId 文章 ID
-     * @return 阅读量
-     */
     @Override
     public Result getArticleViews(Integer articleId) {
         try {
-            String articleIdStr = articleId.toString();
-            Object result = redisTemplate.opsForHash().get(getArticleViewsKey(), articleIdStr);
-            return result != null ? Result.success(result) : Result.error("文章不存在");
+            Integer views = Optional.ofNullable(redisTemplate.opsForValue().get(getArticleViewsKey(articleId)))
+                    .map(Integer::valueOf)
+                    .orElse(0);
+            return Result.success(views);
         } catch (Exception e) {
             logger.error("读取文章 {} 的阅读量失败", articleId, e);
             return Result.error("读取文章阅读量失败");
         }
     }
 
-    /**
-     * 增加文章阅读量
-     *
-     * @param articleId 文章 ID
-     * @return 更新后的阅读量
-     */
     @Override
     public Integer incrementArticleViews(Integer articleId) {
         try {
-            String articleIdStr = articleId.toString();
-            // 判断是否有这个键值对，如果没有就添加一个初始值 0 的键值对
-            if (!redisTemplate.opsForHash().hasKey(getArticleViewsKey(), articleIdStr)) {
-                redisTemplate.opsForHash().put(getArticleViewsKey(), articleIdStr, "0");
+            String key = getArticleViewsKey(articleId);
+            if (Boolean.FALSE.equals(redisTemplate.hasKey(key))) {
+                redisTemplate.opsForValue().set(key, "0");
             }
-            return redisTemplate.opsForHash()
-                    .increment(getArticleViewsKey(), articleIdStr, 1)
+            return Optional.ofNullable(redisTemplate.opsForValue().increment(key, 1))
+                    .orElseThrow(() -> new RuntimeException("增加文章阅读量失败"))
                     .intValue();
         } catch (Exception e) {
             logger.error("增加文章 {} 的阅读量失败", articleId, e);
@@ -77,39 +56,40 @@ public class RedisServiceImpl implements RedisService {
         }
     }
 
-    /**
-     * 判断用户是否已阅读过文章
-     *
-     * @param articleId 文章 ID
-     * @param userId    用户 ID
-     * @return 是否已阅读
-     */
     @Override
-    public boolean hasUserReadArticle(Integer articleId, Integer userId) {
-        String userKey = getArticleUsersKey(articleId);
+    public List<Integer> listTop5() {
         try {
-            return Boolean.TRUE.equals(redisTemplate.opsForSet().isMember(userKey, userId.toString()));
-        } catch (Exception e) {
-            logger.error("检查用户 {} 是否已阅读文章 {} 失败", userId, articleId, e);
-            throw new RuntimeException("检查用户阅读记录失败", e);
-        }
-    }
+            // 使用 Redis 的 keys 命令获取所有阅读量的键
+            Set<String> keys = redisTemplate.keys(ARTICLE_VIEWS_KEY + "*");
+            if (keys == null || keys.isEmpty()) {
+                return new ArrayList<>();
+            }
 
-    /**
-     * 将用户添加到已阅读文章的集合中
-     *
-     * @param articleId 文章 ID
-     * @param userId    用户 ID
-     */
-    @Override
-    public void markUserAsReadArticle(Integer articleId, Integer userId) {
-        String userKey = getArticleUsersKey(articleId);
-        try {
-            redisTemplate.opsForSet().add(userKey, userId.toString());
-            redisTemplate.expire(userKey, 30, TimeUnit.DAYS); // 设置用户阅读记录的过期时间
+            // 批量获取这些键的值
+            List<String> values = redisTemplate.opsForValue().multiGet(keys);
+            if (values == null) {
+                return new ArrayList<>();
+            }
+
+            // 创建一个键值对的集合
+            Map<Integer, Integer> articleViewsMap = new HashMap<>();
+            int index = 0;
+            for (String key : keys) {
+                Integer articleId = Integer.valueOf(key.replace(ARTICLE_VIEWS_KEY, ""));
+                Integer views = Integer.valueOf(values.get(index++));
+                articleViewsMap.put(articleId, views);
+            }
+
+            // 按照阅读量排序，取前五篇文章的 ID
+            return articleViewsMap.entrySet().stream()
+                    .sorted((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()))
+                    .limit(5)
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+
         } catch (Exception e) {
-            logger.error("标记用户 {} 已阅读文章 {} 失败", userId, articleId, e);
-            throw new RuntimeException("标记用户已阅读文章失败", e);
+            logger.error("获取前五篇阅读量最高的文章失败", e);
+            throw new RuntimeException("获取前五篇阅读量最高的文章失败", e);
         }
     }
 }

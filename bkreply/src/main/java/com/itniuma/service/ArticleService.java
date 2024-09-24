@@ -3,6 +3,8 @@ package com.itniuma.service;
 import com.itniuma.pojo.Article;
 import com.itniuma.pojo.PageBean;
 
+import java.util.List;
+
 
 public interface ArticleService{
     //添加
@@ -21,4 +23,5 @@ public interface ArticleService{
     PageBean listAll(Integer pageNum, Integer pageSize, String title);
 
 
+    List<Article> listTop5();
 }

@@ -8,11 +8,13 @@ import com.itniuma.mapper.ArticleMapper;
 import com.itniuma.pojo.Article;
 import com.itniuma.pojo.PageBean;
 import com.itniuma.service.ArticleService;
+import com.itniuma.service.RedisService;
 import com.itniuma.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -107,5 +109,21 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
 
+    @Autowired
+    private RedisService redisService;
+    @Override
+    public List<Article> listTop5() {
+        List<Integer> top5ArticleIds = redisService.listTop5();
+        // 根据文章 ID 获取对应的 Article 对象（这里需要你的数据库或数据源逻辑）
+        List<Article> top5Articles = new ArrayList<>();
+        for (Integer articleId : top5ArticleIds) {
+            // 假设有一个方法 getArticleById 通过 ID 获取文章信息
+            Article article = this.findById(articleId);
+            if (article != null) {
+                top5Articles.add(article);
+            }
+        }
+        return top5Articles;
+    }
 
 }

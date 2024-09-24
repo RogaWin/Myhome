@@ -53,3 +53,8 @@ export const articleViewService = (articleId) => {
 export const articleViewAddService = (articleId) => {
 	return request.post(`/article/views?id=${articleId}`); // 在 URL 中添加查询参数
 };
+
+//找到top5的文章
+export const articleTop5Service = () => {
+	return request.get('/article/top5')
+}

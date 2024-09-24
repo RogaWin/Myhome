@@ -9,7 +9,6 @@ import com.itniuma.pojo.Result;
 import com.itniuma.service.ArticleService;
 import com.itniuma.service.RedisService;
 import com.itniuma.service.UserService;
-import com.itniuma.utils.ThreadLocalUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -107,21 +106,16 @@ public class ArticleController {
      * @param articleId 文章 ID
      * @return 更新后的阅读量
      */
-    @Autowired
-    private UserService userService;
     @PostMapping("/views")
     public Result addViews(@RequestParam(value = "id") Integer articleId) {
-        Map<String, Object> map = ThreadLocalUtil.get();
-        Integer userId = (Integer) map.get("id");
-        // 检查用户是否已阅读过文章
-        if (!redisService.hasUserReadArticle(articleId, userId)) {
-            // 增加阅读量
-            Integer views = redisService.incrementArticleViews(articleId);
-            // 标记用户已阅读
-            redisService.markUserAsReadArticle(articleId, userId);
-            return Result.success(views);
-        } else {
-            return Result.error(2,"用户已阅读过文章");
-        }
+        // 增加阅读量
+        Integer views = redisService.incrementArticleViews(articleId);
+        return Result.success(views);
+    }
+
+    @ApiOperation(value = "获取前5阅读量的文章")
+    @GetMapping("/top5")
+    public Result top5(){
+        return Result.success(articleService.listTop5());
     }
 }

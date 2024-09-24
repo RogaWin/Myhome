@@ -6,7 +6,7 @@ import { ElMessage, ElMessageBox } from "element-plus";
 import { useRouter } from "vue-router";
 import { useTokenStore } from "@/stores/token.js";
 import avatar from '@/assets/default.png';
-import { articleListAllService } from "@/api/article.js";
+import {articleListAllService, articleTop5Service} from "@/api/article.js";
 import {useArticleStore} from "@/stores/article.js";
 
 export default {
@@ -34,7 +34,7 @@ export default {
         const articles = ref([]);
         const pageNum = ref(1); //当前页
         const total = ref(20); //总条数
-        const pageSize = ref(3); //每页条数
+        const pageSize = ref(5); //每页条数
         const tokenStore = useTokenStore();
         const userInfoStore = useUserInfoStore();
         const activeIndex = ref('1');
@@ -45,11 +45,27 @@ export default {
             // 更多博客数据
         ]);
         const popularBlogs = ref([
-            { title: '牛爷爷的爱情故事' },
-            { title: '牛魔王前传' },
-            { title: '大角牛勇敢向前' },
-            // 更多热门博文数据
         ]);
+        //获取热门文章
+        const getPopularBlogs = async () => {
+            try {
+                const response = await articleTop5Service();
+
+                // 检查响应状态
+                if (response.code === 0) {
+                    const data = response.data;
+                    popularBlogs.value = data;
+                } else {
+                    console.error(`Error fetching popular blogs: ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error('Error fetching popular blogs:', error.message);
+            }
+        };
+
+// 确保在适当的生命周期内调用
+        getPopularBlogs();
+
         const totalBlogs = ref(100);
         const keyword = ref('');
 
@@ -147,6 +163,13 @@ export default {
             console.log(articleStore.article)
             router.push('/article/reader');
         };
+
+        const readPopularArticle = (index) => {
+            console.log(index)
+            articleStore.setArticle(popularBlogs.value[index])
+            console.log(articleStore.article)
+            router.push('/article/reader');
+        };
         return {
             categorys,
             categoryId,
@@ -172,7 +195,8 @@ export default {
             articleListAll,
             onSizeChange,
             onCurrentChange,
-            readArticle
+            readArticle,
+            readPopularArticle
         };
     },
 };
@@ -186,8 +210,8 @@ export default {
                     <el-menu-item index="/home">首页</el-menu-item>
                     <el-menu-item index="/tools">导航</el-menu-item>
                     <el-menu-item index="/category">分类</el-menu-item>
-                    <el-menu-item index="/blog">博文</el-menu-item>
-                    <el-menu-item index="/chat">聊天室</el-menu-item>
+                    <el-menu-item index="/article/manage">博文</el-menu-item>
+                    <el-menu-item index="/chat">留言</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
                     <el-menu-item>
                         <el-input v-model="keyword" class="search-input" placeholder="请输入" clearable />
@@ -247,7 +271,7 @@ export default {
                         </div>
                     </el-card>
                     <!-- 分页条 -->
-                    <el-pagination v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[3, 5, 10, 15]"
+                    <el-pagination v-model:current-page="pageNum" v-model:page-size="pageSize" :page-sizes="[3,5, 10, 15]"
                                    layout="jumper, total, sizes, prev, pager, next" background :total="total" @size-change="onSizeChange"
                                    @current-change="onCurrentChange" class="pagination-bar" />
                 </el-col>
@@ -256,10 +280,22 @@ export default {
                         <h3 class="sidebar-title">热门博文</h3>
                         <el-list class="popular-blogs-list">
                             <el-list-item v-for="(item, index) in popularBlogs" :key="index" class="popular-blog-item">
-                                <h4 class="popular-blog-title">{{ item.title }}</h4>
+                                <el-button type="text" class="read-more-btn" @click="readPopularArticle(index)">
+                                    <h4 class="popular-blog-title">{{ item.title }}</h4>
+                                </el-button>
+                                <br>
                             </el-list-item>
                         </el-list>
                     </el-card>
+                    <el-timeline  v-for="(item, index) in popularBlogs.slice(0,3)" style="max-width: 600px" class="timeline-card">
+                        <el-timeline-item :timestamp=item.createTime placement="top">
+                            <el-card>
+                                <el-button type="text" class="read-more-btn" @click="readPopularArticle(index)">
+                                    <h4 class="popular-blog-title">{{ item.title }}</h4>
+                                </el-button>
+                            </el-card>
+                        </el-timeline-item>
+                    </el-timeline>
                 </el-col>
             </el-row>
         </el-main>
@@ -267,6 +303,24 @@ export default {
 </template>
 
 <style scoped>
+.timeline-card{
+    margin-left: -45px; /* 调整这个值来控制左移的距离 */
+    color: #00ae9e;
+    .el-timeline-item {
+        color: #0d47a1; /* 深蓝色文字 */
+
+    }
+    .el-card {
+        background-color: #bbdefb; /* 卡片背景色，淡蓝色 */
+        color: #0d47a1; /* 卡片文字颜色，深蓝色 */
+        border: 1px solid #90caf9; /* 卡片边框颜色 */
+        padding: 16px; /* 卡片内边距 */
+    }
+    .el-card:hover {
+        background-color: #90caf9; /* 卡片背景色，淡蓝色 */
+    }
+}
+
 
 .blog-summary{
     overflow: hidden;
@@ -315,6 +369,7 @@ export default {
 .blog-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.38);
 }
 .blog-title {
     color: #ffffff;
@@ -345,7 +400,7 @@ export default {
     margin-top: 20px;
 }
 .sidebar-card {
-    background: rgba(255, 255, 255, 0.1);
+    background-color: #bbd5fb; /* 卡片背景色，淡蓝色 */
     border-radius: 15px;
     border: none;
     padding: 20px;
@@ -358,6 +413,7 @@ export default {
 }
 .popular-blogs-list {
     margin-top: 10px;
+
 }
 .popular-blog-item {
     border-bottom: 1px solid #ffffff33;
@@ -365,6 +421,9 @@ export default {
 }
 .popular-blog-title {
     color: #00adb5;
+}
+.popular-blog-title:hover {
+    color: #202323;
 }
 .animated-card {
     animation: fadeInUp 0.5s ease-in-out;

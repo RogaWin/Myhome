@@ -2,12 +2,17 @@ package com.itniuma.service;
 
 import com.itniuma.pojo.Result;
 
+import java.util.List;
+
 public interface RedisService {
     Result getArticleViews(Integer articleId);
 
-    boolean hasUserReadArticle(Integer articleId, Integer userId);
 
     Integer incrementArticleViews(Integer articleId);
 
-    void markUserAsReadArticle(Integer articleId, Integer userId);
+    List<Integer> listTop5();
+
+//    void markUserAsReadArticle(Integer articleId, Integer userId);
+
+//    boolean hasUserReadArticle(Integer articleId, Integer userId);
 }
