@@ -113,7 +113,7 @@ logging:
 npm install
 ```
 
-# 友情连接
+# 友情链接
 
 ------
 
