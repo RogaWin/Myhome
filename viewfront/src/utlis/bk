@@ -1,0 +1,63 @@
+<template>
+    <div class="app">
+        <div class="stars" v-for="(star, index) in stars" :key="index" :style="star.style">
+            <vue-danmaku v-model:danmus="danmus" loop style="height:100px; width:300px;"></vue-danmaku>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import vueDanmaku from 'vue3-danmaku';
+
+const danmus = ref(['罗佳炜我爱你', '罗佳炜我爱你', '罗佳炜我爱你', '...'])
+
+const stars = ref([]);
+const createStars = () => {
+    for (let i = 0; i < 200; i++) {
+        stars.value.push({
+            style: {
+                left: `${Math.random() * 100}vw`,
+                top: `${Math.random() * 100}vh`,
+                opacity: Math.random(),
+                transform: `scale(${Math.random() * 1.5 + 0.5})`,
+            },
+            brightness: Math.random() // 保存初始亮度
+        });
+    }
+};
+
+const updateStarBrightness = () => {
+    stars.value.forEach(star => {
+        // 逐渐改变亮度
+        star.brightness += (Math.random() * 0.1 - 0.05); // 每次随机增减亮度
+        star.brightness = Math.max(0, Math.min(1, star.brightness)); // 保证亮度在 0 到 1 之间
+        star.style.opacity = star.brightness; // 更新星星的透明度
+    });
+};
+
+onMounted(() => {
+    createStars();
+    setInterval(() => {
+        updateStarBrightness(); // 更新亮度
+    }, 10); // 每 100 毫秒更新一次亮度
+});
+</script>
+
+<style>
+.app {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: url('https://www.nasachina.cn/wp-content/uploads/2024/09/LDN1082_px2048.jpg') no-repeat center center fixed; /* 使用指定的背景图片 */
+    background-size: cover; /* 使背景图覆盖整个区域 */
+}
+.stars {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+}
+</style>

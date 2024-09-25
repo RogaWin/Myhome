@@ -3,18 +3,22 @@
 <mapper namespace="com.itniuma.mapper.MessagesMapper">
 
     <insert id="addMessage">
-        insert into messages(username,content,created_time) values(#{username},#{content},#{createdTime})
+        insert into messages(img, content, created_time) values(#{img}, #{content}, #{createdTime})
     </insert>
+
     <update id="updateMessage">
-        update messages set username=#{username},content=#{content},created_time=#{createdTime} where id=#{id}
+        update messages set img=#{img}, content=#{content}, created_time=#{createdTime} where id=#{id}
     </update>
+
     <delete id="deleteMessage">
         delete from messages where id=#{id}
     </delete>
-    <select id="listAll" resultType="java.lang.Boolean">
-        select * from messages
-    </select>
+
+
     <select id="detail" resultType="com.itniuma.pojo.Messages">
         select * from messages where id=#{id}
+    </select>
+    <select id="listAll" resultType="com.itniuma.pojo.Messages">
+        select * from messages
     </select>
 </mapper>

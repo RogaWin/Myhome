@@ -2,13 +2,18 @@ package com.itniuma.service.impl;
 
 
 import com.itniuma.mapper.MessagesMapper;
+import com.itniuma.mapper.UserMapper;
 import com.itniuma.pojo.Messages;
 import com.itniuma.pojo.Result;
+import com.itniuma.pojo.User;
 import com.itniuma.service.IMessagesService;
+import com.itniuma.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -24,11 +29,20 @@ public class MessagesServiceImpl implements IMessagesService {
     @Autowired
     private MessagesMapper messagesMapper;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public Result addMessage(Messages messages) {
         if(messages==null||messages.getContent()==null){
             return Result.error("添加失败");
         }
+        //获取用户信息
+        Map<String,Object> map = ThreadLocalUtil.get();
+        Long userId = Long.valueOf((Integer) map.get("id"));
+        messages.setId(userId);
+        User user = userMapper.findById(Math.toIntExact(userId));
+        messages.setImg(user.getUserPic());
         messages.setCreatedTime(LocalDateTime.now());
         boolean added = messagesMapper.addMessage(messages);
         if(!added){
@@ -39,8 +53,11 @@ public class MessagesServiceImpl implements IMessagesService {
 
     @Override
     public Result listAll() {
-        boolean isSuccess = messagesMapper.listAll();
-        return isSuccess?Result.success():Result.error("获取失败");
+        List<Messages> messagesList = messagesMapper.listAll();
+        if(messagesList==null){
+            return Result.error("获取失败");
+        }
+        return Result.success(messagesList);
     }
 
     @Override

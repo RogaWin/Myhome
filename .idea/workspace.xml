@@ -4,19 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="finished read and editor">
-      <change afterPath="$PROJECT_DIR$/viewfront/src/api/message.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/tool/Message.vue" afterDir="false" />
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="meassage bk ok!">
+      <change afterPath="$PROJECT_DIR$/viewfront/src/utlis/bk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/MessagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/MessagesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/MessagesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/MessagesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/MessagesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/MessagesServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/mapper/MessagesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/com/itniuma/mapper/MessagesMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewfront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewfront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/api/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/api/article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/assets/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/assets/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/api/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/api/message.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/tool/Message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/tool/Message.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -103,6 +108,7 @@
       <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views\about" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="A:\Desktop\repos_git\Myhome\bkreply\src\main\resources\com\itniuma\mapper" />
       <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\assets" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -131,7 +137,8 @@
       <workItem from="1727099267952" duration="3029000" />
       <workItem from="1727140882760" duration="17267000" />
       <workItem from="1727176732783" duration="1032000" />
-      <workItem from="1727180500307" duration="5537000" />
+      <workItem from="1727180500307" duration="5656000" />
+      <workItem from="1727223732164" duration="10472000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -175,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727168818452</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="meassage bk ok!">
+      <created>1727186755428</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727186755428</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -186,6 +200,7 @@
     <MESSAGE value="Beautify the page" />
     <MESSAGE value="add readcount function" />
     <MESSAGE value="finished read and editor" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished read and editor" />
+    <MESSAGE value="meassage bk ok!" />
+    <option name="LAST_COMMIT_MESSAGE" value="meassage bk ok!" />
   </component>
 </project>

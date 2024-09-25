@@ -12,13 +12,12 @@
                         @select="handleSelect"
                     />
                 </div>
-
             </el-header>
             <el-main class="main">
                 <div class="toolbox">
                     <el-row :gutter="20">
                         <el-col :span="8" v-for="(tool, index) in tools" :key="index">
-                            <router-link :to="tool.path">
+                            <a :href="tool.path"  rel="noopener noreferrer">
                                 <el-card shadow="always" class="tool-card">
                                     <div class="tool-card-content">
                                         <div class="icon">
@@ -34,7 +33,7 @@
                                         </div>
                                     </div>
                                 </el-card>
-                            </router-link>
+                            </a>
                         </el-col>
                     </el-row>
                 </div>
@@ -44,7 +43,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue';
 import {
     HomeFilled,
     UserFilled,
@@ -52,22 +51,24 @@ import {
     BellFilled,
     Document,
     InfoFilled
-} from '@element-plus/icons-vue'
-import Search from '@/components/Search.vue'
+} from '@element-plus/icons-vue';
+import Search from '@/components/Search.vue';
+import router from "@/router/index.js";
 
 const handleSelect = (item) => {
-    console.log('Selected item:', item)
+    console.log('Selected item:', item);
 }
+
 const tools = ref([
     { name: '首页', description: '回到首页', icon: HomeFilled, path: '/' },
-    { name: '用户管理', description: '管理用户信息', icon: UserFilled, path: '/article/manage' },
-    { name: '设置', description: '系统设置', icon: Setting, path: '/settings' },
-    { name: '消息通知', description: '查看系统消息', icon: BellFilled, path: '/notifications' },
-    { name: '文档', description: '查看系统文档', icon: Document, path: '/docs' },
+    { name: '文章管理', description: '管理文章信息', icon: UserFilled, path: '/article/manage' },
+    { name: '用户信息', description: '用户信息设置', icon: Setting, path: '/user/info' },
+    { name: '留言', description: '查看留言消息', icon: BellFilled, path: '/message' },
+    { name: 'PDF工具', description: 'pdf工具', icon: Document, path: 'https://tools.pdf24.org/zh/all-tools' },
     { name: '关于我们', description: '了解更多信息', icon: InfoFilled, path: '/about' },
-])
+]);
 
-const title = ref('welcome to CSRoGa !!!'.split(''))
+const title = ref('welcome to CSRoGa !!!'.split(''));
 </script>
 
 <style scoped>
@@ -85,7 +86,6 @@ const title = ref('welcome to CSRoGa !!!'.split(''))
     flex-direction: column; /* 让标题和搜索框垂直排列 */
     align-items: center; /* 中心对齐 */
     margin-bottom: 20px; /* 增加下边距，避免重叠 */
-
 }
 
 .title-container {
@@ -200,19 +200,22 @@ a {
     color: red;
     font-style: italic;
 }
+
 /*设置边框变色*/
 .search-input:focus {
     border: 5px solid #00f5ff;
     box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
     outline: none;
 }
+
 /*长度为一半父组件*/
-.search-container{
+.search-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 75%;
 }
+
 .letter:nth-child(1) { animation-delay: 0.1s; }
 .letter:nth-child(2) { animation-delay: 0.3s; }
 .letter:nth-child(3) { animation-delay: 0.5s; }

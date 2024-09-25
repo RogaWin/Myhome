@@ -2,6 +2,9 @@ package com.itniuma.mapper;
 
 
 import com.itniuma.pojo.Messages;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,11 +14,12 @@ import com.itniuma.pojo.Messages;
  * @author 罗佳炜
  * @since 2024-09-24
  */
+@Mapper
 public interface MessagesMapper {
 
     boolean addMessage(Messages messages);
 
-    boolean listAll();
+     List<Messages> listAll();
 
     boolean deleteMessage(Integer id);
 

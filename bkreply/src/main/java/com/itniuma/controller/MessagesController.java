@@ -43,7 +43,7 @@ public class MessagesController {
 
     @ApiOperation("查看详细")
     @RequestMapping("/detail")
-    public Result detail(Integer id){
+    public Result detail(@RequestParam("id") Integer id){
         return messagesService.detail(id);
     }
 
