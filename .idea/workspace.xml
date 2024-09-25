@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="meassage bk ok!">
-      <change afterPath="$PROJECT_DIR$/viewfront/src/utlis/bk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/MessagesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/MessagesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/MessagesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/MessagesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/pojo/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/MessagesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/MessagesServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/mapper/MessagesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/com/itniuma/mapper/MessagesMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/api/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/api/message.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/tool/Message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/tool/Message.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" afterDir="false" />
-    </list>
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="导航功能实现" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -138,7 +121,7 @@
       <workItem from="1727140882760" duration="17267000" />
       <workItem from="1727176732783" duration="1032000" />
       <workItem from="1727180500307" duration="5656000" />
-      <workItem from="1727223732164" duration="10472000" />
+      <workItem from="1727223732164" duration="11300000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -189,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727186755428</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="导航功能实现">
+      <created>1727245123211</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727245123211</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +191,7 @@
     <MESSAGE value="add readcount function" />
     <MESSAGE value="finished read and editor" />
     <MESSAGE value="meassage bk ok!" />
-    <option name="LAST_COMMIT_MESSAGE" value="meassage bk ok!" />
+    <MESSAGE value="导航功能实现" />
+    <option name="LAST_COMMIT_MESSAGE" value="导航功能实现" />
   </component>
 </project>
