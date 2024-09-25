@@ -11,6 +11,7 @@ import Editor from '@/views/article/Editor.vue'
 import Home from "@/views/Home.vue";
 import Tool from "@/views/tool/Tool.vue";
 import Message from "@/views/tool/Message.vue"
+import Category from "@/views/category.vue";
 
 
 
@@ -87,7 +88,12 @@ const routes = [
         name: 'Message',
         path: '/message',
         component: Message,
-    }
+    },
+    {
+        name: 'Category',
+        path: '/category',
+        component: Category,
+    },
 ]
 //创建路由实例
 const router = createRouter({

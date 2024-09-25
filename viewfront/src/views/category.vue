@@ -6,14 +6,9 @@ import { ElMessage, ElMessageBox } from "element-plus";
 import { useRouter } from "vue-router";
 import { useTokenStore } from "@/stores/token.js";
 import avatar from '@/assets/default.png';
-import {
-    articleCategoryAllListService,
-    articleCategoryListService,
-    articleListAllService,
-    articleTop5Service
-} from "@/api/article.js";
+import {articleListAllService, articleTop5Service} from "@/api/article.js";
 import {useArticleStore} from "@/stores/article.js";
-import ArticleCategory from "@/views/article/ArticleCategory.vue";
+
 export default {
     name: 'HomePage',
     computed: {
@@ -27,13 +22,12 @@ export default {
             return Crop
         }
     },
-    components: {ArticleCategory, CaretBottom, User },
+    components: { CaretBottom, User },
     setup() {
         //文章分类数据模型
         const categorys = ref([]);
         //用户搜索时选中的分类id
         const categoryId = ref('');
-        const categoryIds = ref([]);
         //用户搜索时选中的发布状态
         const state = ref('');
         //文章列表数据模型
@@ -52,12 +46,6 @@ export default {
         ]);
         const popularBlogs = ref([
         ]);
-
-        const articleCategoryList = async () => {
-            const result = await articleCategoryAllListService();
-            categorys.value = result.data
-        }
-        articleCategoryList();
         //获取热门文章
         const getPopularBlogs = async () => {
             try {
@@ -136,8 +124,7 @@ export default {
             let params = {
                 pageNum: pageNum.value,
                 pageSize: pageSize.value,
-                title: keyword.value ? keyword.value : null,
-                categoryIds: categoryIds.value ? categoryIds.value.join(',') : ''
+                title: keyword.value ? keyword.value : null
             };
             let result = await articleListAllService(params);
             console.log(result);
@@ -183,11 +170,8 @@ export default {
             console.log(articleStore.article)
             router.push('/article/reader');
         };
-
-
         return {
             categorys,
-            categoryIds,
             categoryId,
             state,
             articles,
@@ -225,25 +209,10 @@ export default {
                 <div class="menu-left">
                     <el-menu-item index="/home">首页</el-menu-item>
                     <el-menu-item index="/tools">导航</el-menu-item>
+                    <el-menu-item index="/category">分类</el-menu-item>
                     <el-menu-item index="/article/manage">博文</el-menu-item>
                     <el-menu-item index="/message">留言</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
-                    <el-menu-item index="/article/category">
-                        <el-select
-                            v-model="categoryIds"
-                            multiple
-                            placeholder="请选择分类"
-                            style="width: 240px"
-                            popper-class="custom-select-dropdown"
-                        >
-                            <el-option
-                                v-for="item in categorys"
-                                :key="item.id"
-                                :label="item.categoryName"
-                                :value="item.id"
-                            />
-                        </el-select>
-                    </el-menu-item>
                     <el-menu-item>
                         <el-input v-model="keyword" class="search-input" placeholder="请输入" clearable />
                         <el-button :icon="Search" circle @click="articleListAll()" />
@@ -329,10 +298,6 @@ export default {
                     </el-timeline>
                 </el-col>
             </el-row>
-        </el-main>
-
-        <el-main>
-
         </el-main>
     </div>
 </template>
@@ -421,9 +386,9 @@ export default {
 
 .blog-image {
     border-radius: 10px;
-/*    固定*/
+    /*    固定*/
     width: 250px;
-/*    固定长度*/
+    /*    固定长度*/
     height: 150px;
 }
 .read-more-btn {
@@ -487,10 +452,5 @@ export default {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-.custom-select-dropdown .el-scrollbar__wrap  {
-    max-height: 200px; /* 设置最大高度 */
-    overflow-y: auto;
 }
 </style>

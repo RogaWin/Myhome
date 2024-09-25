@@ -6,7 +6,10 @@ export  const articleCategoryListService = () => {
 	// return request.get('/category',{headers: {'Authorization':tokenStore.token}})
 	return request.get('/category')
 }
-
+//所有文章分类
+export const articleCategoryAllListService = () => {
+	return request.get('/category/listAll')
+}
 //文章分类添加
 export const articleCategoryAddService = (categoryData) => {
 	return request.post('/category',categoryData)
@@ -21,6 +24,8 @@ export const articleCategoryUpdateService = (categoryData) => {
 export const articleCategoryDeleteService = (categoryId) => {
 	return request.delete('/category',{params:{id:categoryId}})
 }
+
+
 
 //文章列表查询
 export const articleListService = (params) => {

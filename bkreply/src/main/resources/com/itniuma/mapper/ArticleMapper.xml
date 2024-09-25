@@ -3,29 +3,38 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itniuma.mapper.ArticleMapper">
+
     <select id="List" resultType="com.itniuma.pojo.Article">
-        select * from article
+        SELECT * FROM article
         <where>
             <if test="categoryId != null">
-                and category_id = #{categoryId}
+                AND category_id = #{categoryId}
             </if>
             <if test="state != null">
-                and state = #{state}
+                AND state = #{state}
             </if>
             <if test="title != null">
-                and title like concat('%',#{title},'%')
+                AND title LIKE CONCAT('%', #{title}, '%')
             </if>
-                and create_user = #{userId}
+            AND create_user = #{userId}
         </where>
     </select>
+
     <select id="ListAll" resultType="com.itniuma.pojo.Article">
-        select * from article
+        SELECT * FROM article
         <where>
             <if test="title != null">
-                and title like concat('%',#{title},'%')
+                AND title LIKE CONCAT('%', #{title}, '%')
             </if>
-            and state = '已发布'
+            <if test="categoryIds != null and !categoryIds.isEmpty()">
+                AND category_id IN
+                <foreach item="categoryId" collection="categoryIds" open="(" separator="," close=")">
+                    #{categoryId}
+                </foreach>
+            </if>
+            AND state = '已发布'
         </where>
-        order by create_time desc
+        ORDER BY create_time DESC
     </select>
+
 </mapper>

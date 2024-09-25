@@ -92,13 +92,12 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public PageBean listAll(Integer pageNum, Integer pageSize, String title) {
+    public PageBean listAll(Integer pageNum, Integer pageSize, String title, List<Integer> categoryIds) {
         PageBean<Article> pb = new PageBean<>();
         // 分页查询之前开启分页
         PageHelper.startPage(pageNum, pageSize);
         // 调用mapper进行查询
-        List<Article> as = articleMapper.ListAll(title);
-
+        List<Article> as = articleMapper.ListAll(title,categoryIds);
         // 确保返回的是分页结果
         Page<Article> p = (Page<Article>) as;
 

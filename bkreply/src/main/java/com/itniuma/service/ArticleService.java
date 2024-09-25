@@ -20,7 +20,7 @@ public interface ArticleService{
     Article findById(Integer id);
 
 
-    PageBean listAll(Integer pageNum, Integer pageSize, String title);
+    PageBean listAll(Integer pageNum, Integer pageSize, String title, List<Integer> categoryId);
 
 
     List<Article> listTop5();

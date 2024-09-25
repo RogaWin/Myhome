@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -82,10 +83,12 @@ public class ArticleController {
     public Result<PageBean<Article>> listAll(
             Integer pageNum,
             Integer pageSize,
-            @RequestParam(required = false) String title
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) List<Integer> categoryIds
             )
     {
-        PageBean pb = articleService.listAll(pageNum,pageSize,title);
+
+        PageBean pb = articleService.listAll(pageNum,pageSize,title,categoryIds);
         return Result.success(pb);
     }
 

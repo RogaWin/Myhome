@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="导航功能实现" />
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="all finished">
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/category.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/ArticleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/java/com/itniuma/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/com/itniuma/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/com/itniuma/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/api/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/api/article.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Home.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,35 +68,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;A:/Desktop/repos_git/Myhome/viewfront/src/views/about&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;e61dcc9d149586af88107496e21ad20d&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "A:/Desktop/repos_git/Myhome/viewfront/src/views/about",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "e61dcc9d149586af88107496e21ad20d",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -121,7 +138,7 @@
       <workItem from="1727140882760" duration="17267000" />
       <workItem from="1727176732783" duration="1032000" />
       <workItem from="1727180500307" duration="5656000" />
-      <workItem from="1727223732164" duration="11300000" />
+      <workItem from="1727223732164" duration="23469000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -179,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727245123211</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="导航功能实现">
+      <created>1727245149149</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727245149149</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +216,7 @@
     <MESSAGE value="finished read and editor" />
     <MESSAGE value="meassage bk ok!" />
     <MESSAGE value="导航功能实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="导航功能实现" />
+    <MESSAGE value="all finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="all finished" />
   </component>
 </project>
