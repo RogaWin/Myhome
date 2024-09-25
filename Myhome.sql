@@ -1,5 +1,5 @@
 -- 创建数据库
-create database big_event;
+create database myhome;
 
 -- 使用数据库
 use big_event;
