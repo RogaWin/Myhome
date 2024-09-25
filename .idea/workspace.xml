@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="all finished">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/big_dick.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Myhome.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +126,7 @@
       <workItem from="1727180500307" duration="5656000" />
       <workItem from="1727223732164" duration="23838000" />
       <workItem from="1727261220157" duration="3864000" />
-      <workItem from="1727265774155" duration="1253000" />
+      <workItem from="1727265774155" duration="1919000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -200,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727258892444</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="all finished">
+      <created>1727267277348</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727267277348</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
