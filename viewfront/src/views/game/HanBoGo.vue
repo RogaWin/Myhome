@@ -103,7 +103,6 @@
         <h4>小草神</h4>
       </div>
     </div>
-
     <!-- 弹出窗口 -->
     <div id="myModal" class="modalIndex">
       <div class="modal-content-Index">
@@ -112,8 +111,6 @@
       </div>
     </div>
   </div>
-
-
 </template>
 
 <script setup>

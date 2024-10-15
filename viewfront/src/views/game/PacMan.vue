@@ -8,6 +8,9 @@
           <img src="./picture/001.jpg" />
         </div>
       </div>
+        <div class="tip">
+            {{nextBox}}
+        </div>
       <div class="help-window">
         <h1>How to Play</h1>
         <p><strong>Click/tap</strong> or press <strong>[spacebar]</strong> to change the color of the jello until it
@@ -50,7 +53,7 @@ import {ref} from 'vue';
 const finished = ref(4);
 
 window.addEventListener("load", game);
-
+const nextBox = ref();
 function game() {
   var root = document.querySelector(":root"),
       main = document.querySelector(".main"),
@@ -104,6 +107,7 @@ function game() {
         boxes[0].className = "box " + colors[prevMatchColor];
 
         boxes[1].className = "box " + colors[nextMatchColor];
+        nextBox.value=colors[nextMatchColor];
 
         rerun();
         setTimeout(checkColorMatch, dur);
@@ -146,6 +150,16 @@ function restartGame() {
 </script>
 
 <style scoped>
+.tip{
+    background-color: var(--nextBox) ;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-left: 47%;
+    top: 90%;
+/*    字体大小*/
+    font-size: 30px;
+}
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -158,6 +172,7 @@ function restartGame() {
 }
 
 :root {
+  --nextBox: v-bind(nextBox);
   --dur: 2s;
   font-size: calc(10px + 1vmin);
 }

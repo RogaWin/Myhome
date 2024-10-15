@@ -4,64 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="all finished">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/GameLayOut.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/11.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/22.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/33.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/56.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/About.pic1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/About.pic2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/log.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/music.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/music.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/music1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/天气之子.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/HanBoGo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/PacMan.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU19_a8oxmIfNJdER2SjQpf.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU19_a8oxmIfNJdERKSjQpf.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU19_a8oxmIfNJdERySjQ.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU69_a8oxmIdGd4BCOz.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU69_a8oxmIdGh4BCOz.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU69_a8oxmIdGl4BA.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/001.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/background.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/刻猫猫.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/可莉.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/小可莉.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/小草神.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/汉堡.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/王小美.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/琴团长.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/胡堂主.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/脑婆.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/芭芭rua.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/biubiu.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/biubiu.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/可莉洗脑曲.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/可莉洗脑曲.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" afterDir="false" />
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="update about and two games">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Myhome.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Myhome.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/About.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/about/About.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/img/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/img/tou.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/img/证明1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/game/HanBoGo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/game/HanBoGo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/game/PacMan.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/game/PacMan.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +142,7 @@
       <workItem from="1728909666635" duration="785000" />
       <workItem from="1728911132842" duration="283000" />
       <workItem from="1728912029934" duration="1286000" />
+      <workItem from="1728955187946" duration="1833000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -288,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727269210559</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update about and two games">
+      <created>1728955403112</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1728955403112</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,6 +256,7 @@
     <MESSAGE value="meassage bk ok!" />
     <MESSAGE value="导航功能实现" />
     <MESSAGE value="all finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="all finished" />
+    <MESSAGE value="update about and two games" />
+    <option name="LAST_COMMIT_MESSAGE" value="update about and two games" />
   </component>
 </project>
