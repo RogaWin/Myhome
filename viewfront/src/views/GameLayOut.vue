@@ -77,11 +77,11 @@ const handleCommand = (command) => {
         <el-aside width="200px">
             <div class="el-aside__logo"></div>
             <el-menu active-text-color="#2D629C" background-color="#232323" text-color="#005" router>
-                <el-menu-item index="/game/PacMan">
+                <el-menu-item index="/game/Jumper">
                     <el-icon>
                         <Management />
                     </el-icon>
-                    <span>吃豆人</span>
+                    <span>牛牛果冻跳跳跳</span>
                 </el-menu-item>
                 <el-menu-item index="/game/HanBoGo">
                     <el-icon>

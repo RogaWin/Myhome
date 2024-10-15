@@ -13,7 +13,7 @@ import Tool from "@/views/tool/Tool.vue";
 import Message from "@/views/tool/Message.vue"
 import Category from "@/views/category.vue";
 import GameLayOut from "@/views/GameLayOut.vue";
-import PacMan from "@/views/game/PacMan.vue";
+import Jumper from "@/views/game/Jumper.vue";
 import HanBoGo from "@/views/game/HanBoGo.vue";
 
 //定义路由关系
@@ -32,9 +32,9 @@ const routes = [
         component: GameLayOut,
         children: [
             {
-                name: 'PacMan',
-                path: '/game/PacMan',
-                component: PacMan ,
+                name: 'Jumper',
+                path: '/game/Jumper',
+                component: Jumper ,
             },
             {
                 name: 'HanBoGo',
