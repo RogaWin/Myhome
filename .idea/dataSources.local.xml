@@ -12,6 +12,7 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
+            <name qname="myhome" />
             <name qname="@" />
             <name qname="big_event" />
           </node>

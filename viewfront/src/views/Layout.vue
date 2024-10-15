@@ -126,6 +126,7 @@ const handleCommand = (command) => {
                     <el-menu-item index="/tools">导航</el-menu-item>
                     <el-menu-item index="/article/category">分类</el-menu-item>
                     <el-menu-item index="/article/manage">博文</el-menu-item>
+                    <el-menu-item index="/game">游戏</el-menu-item>
                     <el-menu-item index="/message">留言</el-menu-item>
                     <el-menu-item index="/about">关于</el-menu-item>
                 </el-menu>

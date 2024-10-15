@@ -4,7 +4,65 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="all finished" />
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="all finished">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/GameLayOut.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/11.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/22.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/33.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/56.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/About.pic1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/About.pic2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/Life.pic6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/log.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/music.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/music.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/music1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/about/image/天气之子.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/HanBoGo.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/PacMan.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU19_a8oxmIfNJdER2SjQpf.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU19_a8oxmIfNJdERKSjQpf.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU19_a8oxmIfNJdERySjQ.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU69_a8oxmIdGd4BCOz.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU69_a8oxmIdGh4BCOz.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/font/5aU69_a8oxmIdGl4BA.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/001.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/刻猫猫.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/可莉.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/小可莉.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/小草神.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/汉堡.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/王小美.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/琴团长.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/胡堂主.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/脑婆.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/picture/芭芭rua.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/biubiu.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/biubiu.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/可莉洗脑曲.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/viewfront/src/views/game/vedio/可莉洗脑曲.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6de3bc9e-737d-41e0-aef5-283c0cb983ef.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Myhome.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Myhome.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bkreply/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/Layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/About.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/about/About.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/img/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/img/tou.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/about/img/证明1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" beforeDir="false" afterPath="$PROJECT_DIR$/viewfront/src/views/tool/Tool.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +118,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;A:/Desktop/repos_git/Myhome/viewfront/src/views/about&quot;,
+    &quot;last_opened_file_path&quot;: &quot;A:/Desktop/repos_git/Myhome/viewfront/src/views&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -88,9 +146,14 @@
       <recent name="com.itniuma.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views" />
+      <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views\game" />
       <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views\about" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views" />
+      <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views\" />
+      <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\views\game" />
       <recent name="A:\Desktop\repos_git\Myhome\bkreply\src\main\resources\com\itniuma\mapper" />
       <recent name="A:\Desktop\repos_git\Myhome\viewfront\src\assets" />
     </key>
@@ -123,7 +186,16 @@
       <workItem from="1727180500307" duration="5656000" />
       <workItem from="1727223732164" duration="23838000" />
       <workItem from="1727261220157" duration="3864000" />
-      <workItem from="1727265774155" duration="2551000" />
+      <workItem from="1727265774155" duration="2602000" />
+      <workItem from="1727754595680" duration="152000" />
+      <workItem from="1728619154805" duration="1474000" />
+      <workItem from="1728706886454" duration="683000" />
+      <workItem from="1728793708118" duration="5296000" />
+      <workItem from="1728799824316" duration="103000" />
+      <workItem from="1728801340530" duration="3191000" />
+      <workItem from="1728909666635" duration="785000" />
+      <workItem from="1728911132842" duration="283000" />
+      <workItem from="1728912029934" duration="1286000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -209,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727267935634</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="all finished">
+      <created>1727269210559</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1727269210559</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

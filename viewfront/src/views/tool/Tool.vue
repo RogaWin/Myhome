@@ -47,7 +47,7 @@ import { onMounted, ref } from 'vue';
 import {
     HomeFilled,
     UserFilled,
-    Setting,
+    Ticket,
     BellFilled,
     Document,
     InfoFilled
@@ -62,7 +62,7 @@ const handleSelect = (item) => {
 const tools = ref([
     { name: '首页', description: '回到首页', icon: HomeFilled, path: '/' },
     { name: '文章管理', description: '管理文章信息', icon: UserFilled, path: '/article/manage' },
-    { name: '用户信息', description: '用户信息设置', icon: Setting, path: '/user/info' },
+    { name: '小游戏', description: '小游戏', icon: Ticket, path: '/game' },
     { name: '留言', description: '查看留言消息', icon: BellFilled, path: '/message' },
     { name: 'PDF工具', description: 'pdf工具', icon: Document, path: 'https://tools.pdf24.org/zh/all-tools' },
     { name: '关于我们', description: '了解更多信息', icon: InfoFilled, path: '/about' },

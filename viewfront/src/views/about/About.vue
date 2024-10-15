@@ -1,161 +1,378 @@
 <template>
-    <div class="container">
-        <div class="leftBox">
-            <div class="head">
-                <img src="./img/tou.png" alt="" />
-                <h1>Luojiawei的简历</h1>
+    <div class="home">
+        <div class="content">
+            <div class="stars"></div>
+            <img class="bgc" src="./image/Life.pic1.jpg" width="100%" alt="">
+            <h3>
+                <span class="titles"  :innerHTML="displayedText"></span>
+            </h3>
+            <img class="icon" src="./image/Life.pic2.png" alt="">
+            <div class='ribbon'>
+                <router-link  :to="{path:'/Home'}"><span>Back</span></router-link>
             </div>
-            <div class="basicInfo">
-                <h2 class="leftTitle">基本信息</h2>
-                <ul>
-                    <li><span>名字：</span>RogaWin(罗佳炜)</li>
-                    <li><span>性别：</span>男</li>
-                    <li><span>毕业院校：</span>江西理工大学</li>
-                    <li><span>博客：</span><a href="https://blog.csdn.net/elderingezez?spm=1000.2115.3001.5343" target="_blank">csdn</a></li>
-                    <li><span>GitHub：</span><a href="https://github.com/RogaWin" target="_blank">https://github.com/RogaWin</a></li>
-                </ul>
+
+        </div>
+        <div class="introduce">
+            <div class="introduce_item">
+                <img class="introduce_item_img" src="./image/Life.pic3.jpg" alt="">
+                <span class="introduce_item_title">嗨，我是牛牛，一个热爱编程和写作的大学生。我从最初的Java开发者成长为现在的全栈工程师。除了工作，我还喜欢阅读科技博客、探索新的编程语言和框架，以及通过写作分享我的学习心得和项目经验。创建这个博客的初衷是希望与更多志同道合的朋友交流，共同进步</span>
             </div>
-            <div class="contact">
-                <h2 class="leftTitle">联系方式</h2>
-                <ul>
-                    <li><span><i class="fa fa-fw fa-phone"></i>电话：</span>17379948860</li>
-                    <li><span><i class="fa fa-fw fa-envelope-o"></i>邮箱：</span>2240774934@qq.com</li>
-                    <li><span><i class="fa fa-fw fa-qq"></i>QQ：</span>2240774934</li>
-                </ul>
+            <div class="introduce_item">
+
+                <span class="introduce_item_titles">回想起三年前，我还是一个对博客一无所知的新手。那时的我，只是单纯地想找一个地方记录自己的学习笔记和项目心得。随着时间的推移，我发现博客不仅是一个记录工具，更是一个与同行交流、互相学习的平台。从最初的每周一篇，到现在的每周多篇，我的博客逐渐积累了大量的读者和粉丝。每一次看到读者留言、点赞或分享我的文章，我都感到无比的欣慰和满足。</span>
+                <img class="introduce_item_img" src="./image/Life.pic4.jpg" alt="">
             </div>
-            <div class="application">
-                <h2 class="leftTitle">应聘岗位</h2>
-                <p>无</p>
+            <div class="introduce_item">
+                <img class="introduce_item_img" src="./image/Life.pic5.jpg" alt="">
+                <span class="introduce_item_title">在专业技能方面，我擅长Java、Python、JavaScript等编程语言，以及Spring、Django、React等框架。我曾在多个大型项目中担任核心开发者，积累了丰富的项目经验。除了编程，我还热爱摄影和旅行。每当有空闲时间，我都会拿起相机，记录下生活中的美好瞬间。同时，我也喜欢通过阅读书籍和观看纪录片来拓宽自己的视野</span>
             </div>
-            <div class="aboutme">
-                我是一位在校大学生，目标找到工作和女朋友。
+            <div class="introduce_item">
+                <span class="introduce_item_titles">如果你对我的文章有任何疑问或建议，或者想与我交流编程、摄影等方面的心得，欢迎通过以下方式联系我:<br>电子邮件：niuniu@example.com</span>
+                <img class="introduce_item_img" src="./image/Life.pic6.jpg" alt="">
             </div>
         </div>
+        <img class="music_img" id="pause" src="./image/music1.png" alt="pause" style="cursor: pointer;">
+  </div>
 
-        <div class="rightBox">
-            <h3 class="rightTitle"><i class="fa fa-fw fa-rocket"></i>项目与工作经验</h3>
-            <h4>个人项目</h4>
-            <ul class="itemList">
-                <li v-for="(project, index) in projects" :key="index">
-                    <div class="circle"></div>
-                    <h5>{{ project.title }}</h5>
-                    <p v-for="(desc, dIndex) in project.descriptions" :key="dIndex">{{ desc }}</p>
-                </li>
-            </ul>
-
-            <h3 class="rightTitle"><i class="fa fa-fw fa-rocket"></i>专业技能</h3>
-            <h4>前端</h4>
-            <ul class="itemList">
-                <li v-for="(skill, index) in frontendSkills" :key="index">
-                    <div class="circle"></div>
-                    <h5>{{ skill.title }}</h5>
-                    <p v-for="(desc, dIndex) in skill.descriptions" :key="dIndex">{{ desc }}</p>
-                </li>
-            </ul>
-
-            <h4>后端</h4>
-            <ul class="itemList">
-                <li v-for="(skill, index) in backendSkills" :key="index">
-                    <div class="circle"></div>
-                    <h5>{{ skill.title }}</h5>
-                    <p v-for="(desc, dIndex) in skill.descriptions" :key="dIndex">{{ desc }}</p>
-                </li>
-            </ul>
-        </div>
-
-        <div class="footer">
-            Made with <i class="fa fa-fw fa-heart"></i> by <a href="https://github.com/RogaWin" target="_blank">RogaWin</a>. 我不玩原神
-        </div>
-
-        <div class="review" v-if="showReviewModal" @click="hideReview">
-            <img :src="reviewImgSrc" id="review-img" alt="证明图片" />
-        </div>
-    </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<style scoped>
+* {
+    margin: 0;
+    padding: 0
+}
 
-// 项目数据
-const projects = ref([
-    {
-        title: '机器人对战平台',
-        descriptions: [
-            '机器人对战平台是一个基于人工智能的竞技平台，支持多种机器人对战模式和策略。',
-            '技术栈：STM32/USART/UART/SPI/I2C/CAN/FreeRTOS',
-            '负责小车的 STM32 芯片开发，包括串口通信、武器系统、防御系统的设计与实现。',
-            '开发和优化通信协议，确保系统的稳定性和实时性。',
-            '使用 STM32CubeIDE 进行开发，使用 STM32 HAL 和 FreeRTOS 实现系统功能。',
-            '进行调试和性能分析，使用 ST-LINK/V2 和 Trace 工具。',
-            '使用 RTOS 系统实现低延迟网传摄像头。',
-        ],
-    },
-    {
-        title: '牛马点评',
-        descriptions: [
-            '牛马点评平台是一个用户评价和评分系统，支持用户对产品进行评分和评论。',
-            '技术栈：redis/springboot/mysql',
-            '开发和迭代评价系统功能，包括评论模块、评分系统和数据分析。',
-            '后台管理界面的设计和功能。',
-            '优化数据存储和分析，支持高并发用户访问。',
-        ],
-    },
-    // 其他项目...
-]);
+.home {
+    height: 100%;
+    overflow: hidden;
+}
 
-// 前端技能数据
-const frontendSkills = ref([
-    {
-        title: 'HTML/CSS',
-        descriptions: [
-            '能够处理一些前端需求',
-            '了解 HTML、CSS',
-        ],
-    },
-    {
-        title: 'JavaScript',
-        descriptions: [
-            '了解处理一些前端请求',
-            '熟练使用 JS 封装构造函数类插件及组件',
-        ],
-    },
-    // 其他前端技能...
-]);
+.content {
+    perspective: 340px;
+    width: 100%;
+    position: relative;
+}
 
-// 后端技能数据
-const backendSkills = ref([
-    {
-        title: 'Spring Boot',
-        descriptions: [
-            '熟练使用 Spring Boot 框架',
-        ],
-    },
-    {
-        title: 'MyBatis/MyBatis-Plus',
-        descriptions: [
-            '熟悉使用 MyBatis/MyBatis-Plus 对数据库的处理',
-            '熟悉使用 MyBatis-X 等工具',
-        ],
-    },
-    // 其他后端技能...
-]);
+h1 {
+    color: white;
+    text-align: center;
+}
 
-// 模态框控制
-const showReviewModal = ref(false);
-const reviewImgSrc = ref('');
+span {
+    display: block;
+    text-align: center;
+}
 
-// 显示模态框
-const showReview = (src) => {
-    reviewImgSrc.value = src;
-    showReviewModal.value = true;
-};
+.stars {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    z-index: 999;
+    border-radius: 50%;
+    box-shadow: -447px 387px #c4c4c4, -401px 118px #fafafa, -109px 217px #d9d9d9, -680px -436px #e3e3e3, 514px 360px #cccccc, -708px 298px #e8e8e8, -696px -270px #ededed, 116px -128px #f7f7f7, 179px 35px white, -404px -90px whitesmoke, -331px -309px #c4c4c4, -363px -24px #d1d1d1, 277px 416px #fafafa, -145px -244px whitesmoke, 123px 62px #d4d4d4, -407px 418px #d9d9d9, 535px 237px #d9d9d9, -466px -78px #f7f7f7, 257px 287px #dedede, 327px -398px #e0e0e0, -602px -38px #c2c2c2, 128px 398px #e6e6e6, 274px -446px #d1d1d1, -602px -298px #c7c7c7, 526px -5px #c4c4c4, -90px -158px #fcfcfc, 5px 294px whitesmoke, -633px 229px #c4c4c4, -475px 427px #dedede, 586px -453px #f2f2f2, 180px -432px #c7c7c7, -637px -88px #cfcfcf, -453px 308px #d6d6d6, -111px 1px #d9d9d9, 573px -450px #ededed, 198px 300px #d6d6d6, -355px 166px #dedede, -715px 13px #e3e3e3, 262px -104px #d1d1d1, 147px 325px #dbdbdb, 1px 399px #dbdbdb, 286px -100px white, 43px -329px #e8e8e8, 617px 55px #d9d9d9, -168px -392px #cccccc, 84px 219px #c9c9c9, 507px -226px #d9d9d9, -327px -70px #e6e6e6, 386px -212px #c4c4c4, -717px 4px #cfcfcf, 502px -231px #e3e3e3, 302px 56px #ededed, 649px 341px #c7c7c7, 569px 350px #c9c9c9, 516px -31px #e6e6e6, 689px 447px #c2c2c2, 591px -206px #fafafa, 422px -137px #e6e6e6, -510px -324px #cccccc, -649px 287px #c2c2c2, -194px -48px #f7f7f7, -279px -329px #d1d1d1, -406px 478px #dbdbdb, -735px -87px #c9c9c9, 30px -197px #dedede, -564px 233px #e6e6e6, -486px -324px #ededed, -54px -7px #ededed, -441px -194px #e3e3e3, -133px -95px #e0e0e0, -722px -73px #d6d6d6, 595px 423px #ededed, 568px -39px #ededed, 370px 377px #d1d1d1, -419px -102px #fcfcfc, -450px 109px #c4c4c4, -57px -119px #d1d1d1, -582px 150px #e6e6e6, 206px -263px #cfcfcf, 582px -461px #c9c9c9, -268px -141px #d9d9d9, -148px 291px #c7c7c7, 254px -179px #c9c9c9, 725px 424px #f0f0f0, 391px -150px #ebebeb, 89px -299px #d4d4d4, 170px 1px #c9c9c9, 243px 209px #c7c7c7, 27px 460px #c9c9c9, -465px -380px #d4d4d4, 530px -360px whitesmoke, -626px 53px #e0e0e0, 706px 218px #d9d9d9, 40px -82px #cccccc, -5px -212px #e6e6e6, -742px 33px #ebebeb, -714px 478px #e0e0e0, -585px -125px #cccccc, -216px 348px #cfcfcf, 601px 332px #ededed, 344px -88px #c4c4c4, 659px -22px #d1d1d1, -411px 188px #d6d6d6, -423px -206px #fcfcfc, -359px -136px #cfcfcf, 612px 406px whitesmoke, 725px 96px whitesmoke, 363px -446px white, -204px 325px #c9c9c9, 740px 176px #fafafa, -489px -352px white, -638px 64px #dbdbdb, 537px -65px #dbdbdb, 151px -32px #ebebeb, 681px 212px #fcfcfc, 604px -149px #e6e6e6, -542px -398px #c4c4c4, -707px 66px whitesmoke, -381px 258px #cfcfcf, -30px 332px #d6d6d6, 512px -381px #c9c9c9, 195px 288px #cccccc, -278px 479px #c7c7c7, 27px -208px #d6d6d6, -288px 15px white, -680px 248px #dedede, 433px 31px #c9c9c9, 150px -206px #d4d4d4, -79px 247px white, -594px 115px #e0e0e0, 99px 292px #e0e0e0, 673px -269px #dedede, -257px -64px #d1d1d1, 449px 81px #f2f2f2, 18px -99px #d1d1d1, -694px 415px #f7f7f7, 240px 264px #e0e0e0, 450px -172px white, 383px 7px #e8e8e8, 338px -73px #c9c9c9, 291px -19px #ebebeb, 659px 137px #d1d1d1, 602px -6px #fcfcfc, 554px 249px #ebebeb, 625px 356px #d9d9d9, 579px -183px #d6d6d6, -20px 250px white, -401px 431px #c4c4c4, -645px -232px #cccccc, -265px -148px white, 553px 258px #d1d1d1, 166px -360px #ebebeb, 719px 51px #ededed, 612px -129px #ebebeb, -465px -104px #f2f2f2, -154px -121px #d9d9d9, -1px 330px #f2f2f2, -666px 248px #f7f7f7, -720px 264px #ededed, 148px -365px #e6e6e6, -388px -349px #c4c4c4, 128px -88px #e3e3e3, -683px -274px #fafafa, -341px 41px #c9c9c9, -59px -471px #f0f0f0, -3px -427px #c2c2c2, 418px 167px #d6d6d6, 343px 247px #c7c7c7, 623px -347px #d1d1d1, 716px -217px white, 243px -409px whitesmoke, -75px -126px #d6d6d6, -730px -91px #c9c9c9, -210px -397px #cfcfcf, -349px 180px #c9c9c9, -567px -281px #e0e0e0, -460px 381px #fcfcfc, -310px -22px #ededed, 450px -1px #dbdbdb, -405px -328px #e3e3e3, 5px 332px #d6d6d6, -294px 302px #fcfcfc, -398px 97px whitesmoke, -696px 325px #cfcfcf, -589px 110px #d6d6d6, 353px -411px #dbdbdb, -697px -318px #ebebeb, -114px -72px #f0f0f0, 259px -193px #fcfcfc, 60px 26px #e6e6e6, -63px -232px white, 205px -372px #f7f7f7, -464px -333px #f2f2f2, -374px 123px white, -377px -386px #c7c7c7, -80px 337px #cccccc, 478px -178px #dbdbdb, 222px 420px #ebebeb, -707px 99px #c4c4c4, 716px -132px #fafafa, -253px -286px #e3e3e3, 646px 178px #f0f0f0, 201px 24px #d1d1d1, 178px -58px #c7c7c7, -557px 368px #ededed, 0px 219px #d9d9d9, -266px -269px #cccccc, 242px -197px #c9c9c9, -419px 193px #c2c2c2, -47px 91px #c7c7c7, -109px 75px #c2c2c2, -146px -453px #d6d6d6, 671px -350px #f2f2f2, 421px -91px #d9d9d9, 738px 19px #ededed, -316px -155px #dedede, 419px 244px #fcfcfc, -278px -418px #d6d6d6, -581px -181px #fcfcfc, 139px 264px #d9d9d9, 691px -11px #ebebeb, -622px 402px #c2c2c2, 219px 396px #f0f0f0, -149px -423px white, -716px -78px #d9d9d9, -590px 341px #e6e6e6, -208px 79px #d6d6d6, -227px -24px #f7f7f7, 239px 262px #d1d1d1, 740px 443px #f7f7f7, 509px 134px #d6d6d6, -555px 232px #e8e8e8, -67px -427px #cfcfcf, -368px 250px #f7f7f7, 715px -415px #fafafa, 411px -301px #f0f0f0, -322px 287px #d9d9d9, -429px -90px #f2f2f2, -327px -387px #f0f0f0, -491px 183px #c2c2c2, -133px 250px #d4d4d4, 538px 139px #e3e3e3, -417px -125px #f0f0f0, 653px -351px #e6e6e6, -549px 38px #d4d4d4, 602px 110px whitesmoke, 415px 105px #e0e0e0, -733px -371px #cfcfcf, 286px 403px #d4d4d4, 11px 320px #c4c4c4, -597px 158px whitesmoke, 716px -350px whitesmoke, 321px 67px #fafafa, -237px -300px #cfcfcf, 74px 152px #c9c9c9, 587px -123px #fcfcfc, 699px -332px whitesmoke, 399px 355px #f7f7f7, -323px 314px #dbdbdb, 89px 416px #c7c7c7, 445px 38px #e3e3e3, 572px 122px #c4c4c4, -258px 372px white, 49px 306px #d9d9d9, 437px -35px #dedede, 566px 174px #f2f2f2, 732px -299px whitesmoke, -410px 394px #ededed, 131px -415px white, 19px -326px #e8e8e8, -700px -188px #d1d1d1, 96px -1px #e0e0e0, -328px -396px #f0f0f0, -117px -214px #fcfcfc, -53px 261px #ebebeb, 80px 134px #d6d6d6, -364px -216px white, -636px -125px #dbdbdb, -639px -265px #e3e3e3, 208px 98px #c7c7c7, 172px 467px #e0e0e0, 435px 309px #e3e3e3, 194px -259px #f0f0f0, 209px -186px #c9c9c9, -312px 418px #fafafa, 229px 407px #c9c9c9, -449px -357px #fafafa, 674px 121px #e8e8e8, 608px -429px #ebebeb, -431px -428px #cfcfcf, 105px 462px #e3e3e3, -179px -372px #e3e3e3, 143px -317px #d6d6d6, -449px -149px #fafafa, -544px 250px #dedede, -220px -323px whitesmoke, 658px 8px whitesmoke, -656px -244px #e8e8e8, 347px 11px whitesmoke, 694px -230px #f7f7f7, -317px 1px #c4c4c4, 28px 23px #fcfcfc, -382px 321px #dbdbdb, 632px -74px #c4c4c4, 154px -245px #c2c2c2, -553px 337px #d6d6d6, -48px -243px #d1d1d1, 92px -391px #cccccc, -71px -256px #cfcfcf, -372px 57px #d9d9d9, 369px -140px #fcfcfc, 675px 81px #c2c2c2, -663px 254px #cccccc, 703px -203px #ededed, 74px -363px #c2c2c2, 643px -458px #d1d1d1, 198px 359px #cccccc, 265px 309px #d4d4d4, -353px -368px #e8e8e8, -465px 439px whitesmoke, 693px 360px #c9c9c9, 634px -397px #d1d1d1, 467px 25px whitesmoke, -558px -272px #e6e6e6, 671px 69px #dbdbdb, 407px 357px #cfcfcf, 379px 80px white, 10px -203px #c9c9c9, 104px -292px #f0f0f0, -667px -29px #d1d1d1, 557px -155px #e6e6e6, -505px 115px #cfcfcf, -605px 164px #f2f2f2, -108px -223px #e0e0e0, 523px -156px #ebebeb, 691px 230px white, -507px -13px #d1d1d1, -349px 332px #dedede, 520px 266px whitesmoke, -66px -250px #e6e6e6, -496px -449px #ebebeb, 414px -170px #dedede, -649px 230px #ebebeb, 598px -92px #c7c7c7, -638px 113px #c2c2c2, 151px 363px #f7f7f7, -445px -241px #f0f0f0, 527px -14px #dedede, 203px -61px #cfcfcf, -716px -284px #ebebeb, -525px 134px #c2c2c2;
+    animation: fly 15s linear infinite;
+    transform-style: preserve-3d;
+}
 
-// 隐藏模态框
-const hideReview = () => {
-    showReviewModal.value = false;
-};
-</script>
+.stars:before,
+.stars:after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    box-shadow: inherit;
+}
 
-<style>
-@import "css/style.css";
+.stars:before {
+    transform: translateZ(-300px);
+    opacity: .6;
+}
+
+.stars:after {
+    transform: translateZ(-600px);
+    opacity: .4;
+}
+
+@keyframes fly {
+    from {
+        transform: translateZ(0px);
+        opacity: .6;
+    }
+    to {
+        transform: translateZ(200px);
+        opacity: .8;
+    }
+}
+
+
+
+.title {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 200px;
+    margin: auto;
+    bottom: 0;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.titles {
+    position: absolute;
+    top: 280px;
+    left: 0;
+    right: 0;
+    font-size: 30px;
+    font-weight: 500;
+    color:#fff;
+    bottom: 0;
+    width: 800px;
+    margin: auto;
+    text-align: center;
+    display: inline-block;
+    line-height: 20px;
+}
+
+.titles::after{
+    content: '';
+    position: absolute;
+    top:0px;
+    height: 28px;
+    width: 3px;
+    background-color: #fff;
+    animation: san 1s steps(1) infinite;
+}
+@keyframes san{
+    0%,100%{
+        background-color: #fff;
+    }
+    50%{
+        background-color: transparent;
+    }
+}
+
+.icon {
+    width: 15px;
+    height: 15px;
+    padding: 5px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    position: absolute;
+    left: 49%;
+    bottom: 50px;
+    animation: downs 2s linear infinite;
+}
+
+@keyframes downs {
+    from {
+        transform: translatey(0px);
+        opacity: .6;
+    }
+    to {
+        transform: translatey(30px);
+        opacity: .8;
+    }
+}
+
+.ribbon {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 25px;
+    top: 0px;
+    margin: auto;
+}
+
+.ribbon:after,
+.ribbon:before {
+    margin-top: 0.5em;
+    content: "";
+    display: flex;
+    ;
+    border: 1.5em solid #fff;
+}
+
+.ribbon:after {
+    border-right-color: transparent;
+}
+
+.ribbon:before {
+    border-left-color: transparent;
+}
+
+.ribbon a:link,
+.ribbon a:visited {
+    color: #000;
+    text-decoration: none;
+    height: 3.5em;
+    overflow: hidden;
+}
+
+.ribbon span {
+    background: #fff;
+    display: inline-block;
+    line-height: 3em;
+    padding: 0 1.5em;
+    margin-top: 0.5em;
+    position: relative;
+    -webkit-transition: background-color 0.2s, margin-top 0.2s;
+    /* Saf3.2+, Chrome */
+    -moz-transition: background-color 0.2s, margin-top 0.2s;
+    /* FF4+ */
+    -ms-transition: background-color 0.2s, margin-top 0.2s;
+    /* IE10 */
+    -o-transition: background-color 0.2s, margin-top 0.2s;
+    /* Opera 10.5+ */
+    transition: background-color 0.2s, margin-top 0.2s;
+}
+
+.ribbon a:hover span {
+    background: #FFD204;
+    margin-top: 0;
+}
+
+.ribbon span:before {
+    content: "";
+    position: absolute;
+    top: 3em;
+    left: 0;
+    border-right: 0.5em solid #9B8651;
+    border-bottom: 0.5em solid #fff;
+}
+
+.ribbon span:after {
+    content: "";
+    position: absolute;
+    top: 3em;
+    right: 0;
+    border-left: 0.5em solid #9B8651;
+    border-bottom: 0.5em solid #fff;
+}
+
+.introduce {
+    display: flex;
+    flex-direction: column;
+}
+
+.introduce_item {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.introduce_item_img {
+    width: 800px;
+    height: 500px;
+}
+
+.introduce_item_title {
+    width: 300px;
+    font-size: 18px;
+    line-height: 36px;
+    align-self: center;
+    padding-left: 100px;
+}
+
+.introduce_item_titles {
+    width: 300px;
+    font-size: 18px;
+    line-height: 36px;
+    align-self: center;
+    padding-right: 100px;
+}
+
+audio {
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+}
+
+.music_img {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 40px;
+    height: 30px;
+    animation: muscis 5s linear infinite;
+}
+
+@keyframes muscis {
+    from {
+        transform: rotate(0deg);
+        opacity: .6;
+    }
+    to {
+        transform: rotate(360deg);
+        opacity: .8;
+    }
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 400px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.icons_items {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    margin-top: 80px;
+    width: 200px;
+}
+
+.icons_items_imgs {
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+
 </style>
+
+
+<script setup>
+  import { ref, onMounted, computed } from 'vue';
+
+  // 定义文本数组
+  const txt = ref(["回头看，轻舟已过万重山"]);
+  // 定义当前要显示的字符串的索引
+  const index = ref(0);
+  // 定义一个标志，用于判断是打字还是删除字效果
+  const huan = ref(true);
+
+  // 计算属性，用于根据index和huan的值动态生成显示的文本
+  const displayedText = computed(() => {
+    if (huan.value) {
+      // 如果是打字效果，返回当前索引之前的所有字符
+      return txt.value[0].slice(0, index.value);
+    } else {
+      // 如果是删除字效果（此示例未实现），可以返回相应处理后的字符串
+      // 这里为了简化，只实现打字效果
+      return '';
+    }
+  });
+
+  // 定时器，用于更新index的值以模拟打字效果
+  onMounted(() => {
+    const typingInterval = setInterval(() => {
+      if (index.value < txt.value[0].length && huan.value) {
+        index.value++; // 增加索引以显示下一个字符
+      } else if (!huan.value && index.value > 0) {
+        // 如果实现了删除字效果，可以在这里减少索引
+        // index.value--; // 减少索引以删除上一个字符（此行代码未启用）
+        clearInterval(typingInterval); // 停止定时器（在删除完所有字符后）
+      } else {
+        clearInterval(typingInterval); // 停止定时器（在打完所有字符后）
+      }
+    }, 200);
+  });
+
+</script>
