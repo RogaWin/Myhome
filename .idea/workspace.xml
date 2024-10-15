@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="update about and two games">
+    <list default="true" id="69e0ba77-cc85-4737-89cd-0c1d49dd70f2" name="Changes" comment="update README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +140,7 @@
       <workItem from="1728911132842" duration="283000" />
       <workItem from="1728912029934" duration="1286000" />
       <workItem from="1728955187946" duration="2589000" />
-      <workItem from="1728976599395" duration="34000" />
+      <workItem from="1728976599395" duration="79000" />
     </task>
     <task id="LOCAL-00001" summary="add 导航">
       <created>1727091257471</created>
@@ -255,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1728957698086</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update README.md">
+      <created>1728976659396</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1728976659396</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +276,7 @@
     <MESSAGE value="导航功能实现" />
     <MESSAGE value="all finished" />
     <MESSAGE value="update about and two games" />
-    <option name="LAST_COMMIT_MESSAGE" value="update about and two games" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
 </project>
